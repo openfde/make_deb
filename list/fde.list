@@ -1,0 +1,10 @@
+/usr/bin/fde_ctrl
+/usr/bin/fde_fs
+/usr/share/ukui-greeter/images/badges/fde_badge.svg
+/usr/share/wayland-sessions/fde.desktop
+/etc/fde.conf
+/usr/bin/ibus-lotime
+/usr/share/ibus/component/lotime.xml
+/lib/systemd/system-sleep/openfde
+/lib/pm-utils/power.d/99openfde
+/usr/share/lightdm/lightdm.conf.d/96-disable-autologin-lock.conf

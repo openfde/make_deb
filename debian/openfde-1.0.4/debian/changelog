@@ -1,0 +1,121 @@
+openfde (1.0.4-20231213) unstable; urgency=medium
+  * 修复vnc 输入太快造成的内容紊乱
+  * 增加锁屏功能
+  * 增加网络设置功能
+  * 增加电源icon跳转到系统->电源设置界面功能
+   
+
+ -- warlice <warlice@warlice>  Wed, 13 Dec 2023 18:53:01 +0800
+
+openfde (1.0.3-20231206) unstable; urgency=medium
+
+  * 修复vnc输入法shift按键不弹起的问题
+  * 修复x100录屏卡顿问题
+  * 修复vnc连接报too many security failures的问题 
+  * 支持拖动窗口越过屏幕左边界限
+  * 去除录屏时长和文件大小两个限制
+  * 文件系统融合支持逻辑卷挂载，支持HOME/openfde写权限
+  * 去除重启自动登录FDE
+
+ -- warlice <warlice@warlice>  Wed, 06 Dec 2023 19:05:22 +0800
+
+openfde (1.0.2-20231128) unstable; urgency=medium
+
+  * 为tigervnc的bin文件添加可执行权限,修复解压无权限问题
+
+ -- fde <fde@fde-pc>  Tue, 28 Nov 2023 09:24:43 +0800
+
+openfde (1.0.2-20231127) unstable; urgency=medium
+
+  * 修改安装脚本，不单独对x100显卡环境进行特殊处理；
+  * 删除fdeion.ko文件
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 17:42:40 +0800
+
+openfde (1.0.2-20231126) unstable; urgency=medium
+
+  * 修复安装BUG
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 10:03:29 +0800
+
+openfde (1.0.2-20231125) unstable; urgency=medium
+
+  * 修改postinst脚本，将文件删除放在安装最后
+  * 修改tigervnc-standalone-server的安装方式
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 09:31:46 +0800
+
+openfde (1.0.2-20231124) unstable; urgency=medium
+
+  * 1. 修复启动时卡在openfde启动界面的问题
+  * 2. 去掉openfde背景图的正在启动中字样
+
+ -- fde <fde@fde-pc>  Fri, 24 Nov 2023 12:09:37 +0800
+
+openfde (1.0.1-20231123) unstable; urgency=medium
+
+  * 1. 还原了systemui关于通知栏丢失快捷操作按钮的功能
+  * 2. 还原了mate-terminla 不能输入中文的问题
+  * 3. 文件系统融合通过文件管理器不能打开openfde下的文件夹的权限问题
+  * 4. 启用笔记本轻触即点击功能
+  * 5. 修复了第一次安装后，登录fde会退出的问题
+
+ -- fde <fde@fde-pc>  Thu, 23 Nov 2023 17:13:32 +0800
+
+openfde (1.0-20231124) unstable; urgency=medium
+
+  * 修改背景图片  
+
+ -- root <root@fde-pc>  Wed, 22 Nov 2023 18:09:46 +0800
+
+openfde (1.0-20231123) unstable; urgency=medium
+
+  * 删除了开机动画
+  * 增加了openfde背景启动画面
+  * 修复了重启时，直接进入fde后鼠标卡顿问题。
+  * 修复了休眠醒来时，背景画面不加载的问题
+  * 修复了vnc 融合应用部分图片不加载问题。修复了部分无法输入的问题
+  * 修复了mate 终端没有光标的问题
+  * 修复了部分usb wifi网络无法启用问题
+  * 修复了文件系统在用户家目录下的openfde，无法访问问题。将android data的在linux上的原始挂载路径从HOME/.local/share/waydroid/data 改为了HOME/.local/share/openfde.
+  * 新增了版本号显示。
+  * 将tigervnc修改的内容添加至包内。
+
+ -- root <root@fde-pc>  Wed, 22 Nov 2023 14:08:26 +0800
+
+openfde (1.0-20231114) unstable; urgency=medium
+
+  * 将x100与其他显卡版本融合，当前版本支持所有显卡；
+  * 安装包同时支持x100和mesa系列gpu。
+  * 更新消息通知方案，避免消息过大，导致systemui崩溃
+  * 去掉vncapp，systemui中的多余日志. 
+  * 更新安装脚本
+  * 修改文件挂载点
+
+ -- fde <fde@fde-pc>  Tue, 14 Nov 2023 13:49:38 +0800
+
+openfde (1.0-20231109) unstable; urgency=medium
+
+  * 增加支持x100笔记本
+
+ -- fde <fde@fde-pc>  Thu, 09 Nov 2023 17:59:19 +0800
+
+openfde (1.0-1106) unstable; urgency=medium
+
+  * 更新软件的依赖包版本
+
+ -- fde <fde@fde-pc>  Mon, 06 Nov 2023 11:15:23 +0800
+
+openfde (1.0-11021037) unstable; urgency=medium
+
+  * 修复应用发送的消息过大导致的崩溃
+  * 修复postinst、preinst脚本中的bug 
+
+ -- fde <fde@fde-pc>  Thu, 02 Nov 2023 10:37:45 +0800
+
+openfde (1.0-1101) unstable; urgency=low
+
+  * Initial release. 
+  * update files 
+
+ -- fde <fde@fde-pc>  Wed, 01 Nov 2023 17:50:21 +0800

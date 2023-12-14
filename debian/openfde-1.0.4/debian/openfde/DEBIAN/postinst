@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#step 1 install fde
+echo "Step 2: configure environment"
+sudo tar -xf /usr/fde.tar -C /
+
+sudo chown root:root /usr/bin/fde_ctrl
+# #sudo chown root:root /usr/bin/fde_session
+sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop
+sudo rm -rf /usr/share/xsessions/i3.desktop
+sudo rm -rf /usr/share/xsessions/mutter.desktop
+sudo tar -xf /usr/waydroid.tar -C /
+
+sudo ldconfig
+sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
+sudo sysctl -p
+echo "Step 3: load the image"
+if [ -e /usr/bin/waydroid ];then
+	sudo waydroid session stop 1>/dev/null 2>&1
+	sudo rm -rf /var/lib/waydroid
+fi
+
+sudo tar -xf /usr/waydroid_image.tar -C /
+
+if [ ! -e "/dev/fdeion" ];then
+	sudo mkdir vendorimg
+	sudo mount /usr/share/waydroid-extra/images/vendor.img vendorimg
+	if [ $? != 0 ];then
+		echo "Error: mount vendorimg failed"
+		sudo rm -rf /usr/fde.tar
+		sudo rm -rf /usr/waydroid.tar
+		sudo rm -rf /usr/fdeion.ko
+		sudo rm -rf /usr/waydroid_image.tar
+		sudo rm -rf /usr/tigervnc.tar.gz
+		exit 1
+	fi
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml
+	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc
+	sudo rm vendorimg/etc/init/android.hardware.sensors@1.0-service.rc
+	sudo umount vendorimg
+	sudo rmdir vendorimg 
+fi	
+
+sudo tar -xzf /usr/tigervnc.tar.gz -C /
+sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
+
+sudo waydroid init -f
+if [ $? != 0 ];then
+	echo "Error: load image failed"
+	sudo rm -rf /usr/fde.tar
+	sudo rm -rf /usr/waydroid.tar
+	sudo rm -rf /usr/waydroid_image.tar
+	sudo rm -rf /usr/tigervnc.tar.gz
+	exit 1
+fi
+
+sudo sed -i "/fde.log/d" /etc/profile
+sudo sed -i  '$a \export LOG_FILE=/var/log/fde.log'  /etc/profile
+sudo touch /var/log/fde.log
+sudo chmod a+wr /var/log/fde.log
+sudo rm -rf /usr/fde.tar
+sudo rm -rf /usr/waydroid.tar
+sudo rm -rf /usr/waydroid_image.tar
+sudo rm -rf /usr/tigervnc.tar.gz
+
+echo "Congratulations, the installation success, please logout and then relogin to the OpenFDE"
+

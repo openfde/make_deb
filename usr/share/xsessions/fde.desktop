@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/usr/bin/fde_ctrl
+Name=FDE
+Icon=
+Keywords=session;fde
+Comment=This session logs you into FDE
+
+#TRANSLATIONS_DIR=translations

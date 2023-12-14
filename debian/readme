@@ -1,0 +1,18 @@
+下面简述在当前仓库基础上进行内容更新的方法：
+1.将新版本的文件进行压缩，tar -cJvpf openfde_x.x.x.orig.tar.gz fde.tar waydroid.tar waydroid_image.tar tigervnc.tar.gz 
+，其中x.x.x为本次需要打包的版本号。将压缩文件存放至与openfde-x.x.x/同级目录下；
+2.进入openfe-x.x.x/目录，在终端中输入dch -i命令，会弹出文本编辑窗口对changlog进行编辑。内容如下所示，此时将最上方的版本号改为本次需要的版本号openfde (x.x.x-yyyymmdd),修改完毕后保存该文件：
+openfde (1.0.2-20231126) unstable; urgency=medium
+
+  * 修复安装BUG
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 10:03:29 +0800
+
+openfde (1.0.2-20231125) unstable; urgency=medium
+
+  * 修改postinst脚本，将文件删除放在安装最后
+  * 修改tigervnc-standalone-server的安装方式
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 09:31:46 +0800
+
+3.输入sudo dpkg-buildpackage -us -uc生成新版本deb包，完成此步骤后，在上级目录下会生成deb包以及相关的文件。
