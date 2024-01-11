@@ -1,11 +1,26 @@
-openfde (1.0.4-20231213) unstable; urgency=medium
-  * 修复vnc 输入太快造成的内容紊乱
+openfde (1.0.5-20231228) unstable; urgency=medium
+
+  * 完善网络设置UI和功能 
+  * 优化x100下图形显示卡顿问题
+  * 优化x100有应用在前台时进入睡眠，唤醒后桌面背景变黑的问题（唤醒后进入登录界面）
+  * 修复部分应用报环境被root的问题
+  * 修复wifi情况dns不生效问题
+
+
+ -- openfde <openfde@openfde>  Wed, 20 Dec 2023 14:11:02 +0800
+
+openfde (1.0.4-20231216) unstable; urgency=medium
   * 增加锁屏功能
   * 增加网络设置功能
   * 增加电源icon跳转到系统->电源设置界面功能
+  * 新增查找应用功能
+  * 修复图库分辨率低问题
+  * 移除wificond服务，避免循环启动wificond;
+  * 修复融合应用输入法掉字，多字问题
+  * 修复融合应用剪切板不同步功能，修复打开services and support报错，修复连接报错，修复双击卡死
    
 
- -- warlice <warlice@warlice>  Wed, 13 Dec 2023 18:53:01 +0800
+ -- openfde <openfde@openfde>  Wed, 13 Dec 2023 18:53:01 +0800
 
 openfde (1.0.3-20231206) unstable; urgency=medium
 

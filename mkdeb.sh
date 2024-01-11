@@ -51,11 +51,14 @@ fi
 
 #step 3 make src.xz
 echo "tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  tigervnc.tar.gz waydroid_image.tar  waydroid.tar"
+sudo cp -a tigervnc.tar.gz $dst/tigervnc.tar.gz
 tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  tigervnc.tar.gz waydroid_image.tar  waydroid.tar
-
 pushd $dst
+#step 4 fill changes
 dch -i 
 popd 
+
+#step 5 make debs
 dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " "`
 pushd debian/$dst_dir
 sudo dpkg-buildpackage -us -uc
@@ -67,31 +70,3 @@ fi
 popd
 echo "deb file generated at debian/"
 
-
-#step 3
-#echo "Step 3: want to retar debs y/n[n]?"
-#read choice 
-#if [ -z "$choice" ];then
-#	choice=n
-#else
-#	if [ "$choice" != "n" ];then
-#		choice=y
-#	fi
-#fi
-#if [ "$choice" = "y" ];then
-#	echo "Tips: retar debs"
-#	tar -zcvpf data/debs.tar  debs   
-#fi
-
-
-#step 4 tar libs
-#echo "Step 4: tar libs"
-#tar -cvpf data/libs.tar libs
-
-#step 4 tar data
-#tar -cvpf data.tar data
-#step 4 composite run.sh
-#echo "Step Last: make install.run by compositing install.sh data.tar together"
-#sym=`date +%F_%H-%M-%S`
-#cat install.sh data.tar > fdeinstall_"$sym"_"$ver".run
-#rm -rf data.tar

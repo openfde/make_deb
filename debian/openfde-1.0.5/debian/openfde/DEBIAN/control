@@ -1,8 +1,8 @@
 Package: openfde
-Version: 1.0.4-20231213
+Version: 1.0.5-20231228
 Architecture: arm64
 Maintainer: openfde <openfde@openfde>
-Installed-Size: 901390
+Installed-Size: 886888
 Recommends: tigervnc-standalone-server, libibus-1.0-5, ibus, libx11-dev, tigervnc-common, tigervnc-viewer, lxc, i3-wm, mutter, konsole, python3-pip
 Section: devel
 Priority: optional
