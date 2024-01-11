@@ -4,7 +4,6 @@
 /usr/lib/libglibutil.so.1.0.71
 /usr/lib/libglibutil.so.1.0
 /usr/lib/libglibutil.so.1
-/usr/lib/python3/dist-packages/gbinder.cpython-38-aarch64-linux-gnu.so
 /usr/lib/waydroid
 /usr/bin/waydroid
 /usr/share/dbus-1/system.d/id.waydro.Container.conf
@@ -54,3 +53,4 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 /usr/local/share/GConf/gsettings/mutter-schemas.convert
 /usr/local/lib/aarch64-linux-gnu/pkgconfig/libmutter-6.pc
+/usr/local/lib/python3.8/dist-packages/gbinder.cpython-38-aarch64-linux-gnu.so

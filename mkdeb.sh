@@ -1,11 +1,20 @@
 #!/bin/bash
 
+set -e
 ver=$1
 if [ -z "$ver" ];then
 	echo "Error: please input a version "
 	exit 1
 fi
 
+sed -i "/gbinder.cpython/d" list/waydroid.list
+sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" > /tmp/gbinder.list
+n=`cat /tmp/gbinder.list |wc -l`
+if  [  $n = 0  ] ;then
+	echo "Error: cant't find gbinder.cpython*aarch64-linux-gnu.so "
+	exit 1
+fi
+sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroid.list
 num=`ls debian -l |grep ^d |wc -l`
 if [ $num -ne 1 ];then
 	echo "Error: more than one directory like openfde-x.x.x exist. please remove the useless one"
