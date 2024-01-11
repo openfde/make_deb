@@ -6,14 +6,11 @@
 /usr/lib/libglibutil.so.1
 /usr/lib/python3/dist-packages/gbinder.cpython-38-aarch64-linux-gnu.so
 /usr/lib/waydroid
-/usr/local/bin/dnsmasq
 /usr/bin/waydroid
 /usr/share/dbus-1/system.d/id.waydro.Container.conf
 /usr/share/polkit-1/actions/id.waydro.Container.policy
 /usr/share/dbus-1/system-services/id.waydro.Container.service
 /usr/lib/systemd/system/waydroid-container.service
-/etc/i3/config
-/etc/sysctl.conf
 /usr/local/lib/aarch64-linux-gnu/mutter-6/libmutter-cogl-6.so
 /usr/local/lib/aarch64-linux-gnu/mutter-6/libmutter-cogl-6.so.0
 /usr/local/lib/aarch64-linux-gnu/mutter-6/libmutter-cogl-6.so.0.0.0
@@ -57,4 +54,3 @@
 /usr/local/share/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
 /usr/local/share/GConf/gsettings/mutter-schemas.convert
 /usr/local/lib/aarch64-linux-gnu/pkgconfig/libmutter-6.pc
-/usr/share/backgrounds/openfde.png

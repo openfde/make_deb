@@ -3,8 +3,12 @@
 /usr/share/ukui-greeter/images/badges/fde_badge.svg
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
+/etc/sysctl.conf
+/etc/i3/config
 /usr/bin/ibus-lotime
 /usr/share/ibus/component/lotime.xml
 /lib/systemd/system-sleep/openfde
 /lib/pm-utils/power.d/99openfde
 /usr/share/lightdm/lightdm.conf.d/96-disable-autologin-lock.conf
+/usr/share/backgrounds/openfde.png
+/usr/local/lib/python3.8/dist-packages/gbinder.cpython-38-aarch64-linux-gnu.so
