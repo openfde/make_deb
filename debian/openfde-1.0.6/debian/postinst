@@ -37,7 +37,6 @@ if [ ! -e "/dev/fdeion" ];then
 	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml
 	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml
 	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc
-	sudo rm vendorimg/etc/init/android.hardware.sensors@1.0-service.rc
 	sudo umount vendorimg
 	sudo rmdir vendorimg 
 fi	

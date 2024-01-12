@@ -1,3 +1,12 @@
+openfde (1.0.6-20240112ubuntu1) unstable; urgency=medium
+
+  * new gallery apk
+  * fix crash when starting fusion linux app 
+  * fix network breaking for some conditions
+ 
+
+ -- warlice <warlice@warlice-pc>  Fri, 12 Jan 2024 11:56:30 +0800
+
 openfde (1.0.5-20231228) unstable; urgency=medium
 
   * 完善网络设置UI和功能 
