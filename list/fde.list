@@ -5,7 +5,7 @@
 /etc/fde.conf
 /etc/sysctl.conf
 /etc/i3/config
-/usr/bin/ibus-lotime
+/usr/bin/ibus-fdeime
 /usr/share/ibus/component/fdeime.xml
 /lib/systemd/system-sleep/openfde
 /lib/pm-utils/power.d/99openfde
