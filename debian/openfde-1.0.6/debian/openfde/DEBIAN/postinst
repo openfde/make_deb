@@ -34,16 +34,19 @@ if [ ! -e "/dev/fdeion" ];then
 		sudo rm -rf /usr/tigervnc.tar.gz
 		exit 1
 	fi
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml
-	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc
-	sudo rm vendorimg/etc/init/android.hardware.sensors@1.0-service.rc
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml 1>/dev/null 2>&1
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml 1>/dev/null 2>&1
+	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc 1>/dev/null 2>&1
 	sudo umount vendorimg
 	sudo rmdir vendorimg 
 fi	
 
 sudo tar -xzf /usr/tigervnc.tar.gz -C /
 sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
+
+if [ -e /lib/systemd/system/waydroid-container.service ];then
+	sudo systemctl stop waydroid-container 1>/dev/null 2>&1
+fi
 
 sudo waydroid init -f
 if [ $? != 0 ];then

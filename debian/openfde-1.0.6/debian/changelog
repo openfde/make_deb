@@ -1,4 +1,4 @@
-openfde (1.0.6-20240112ubuntu1) unstable; urgency=medium
+openfde (1.0.6-20240112) unstable; urgency=medium
 
   * new gallery apk
   * fix crash when starting fusion linux app 
