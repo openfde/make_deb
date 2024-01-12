@@ -15,6 +15,13 @@ if  [  $n = 0  ] ;then
 	exit 1
 fi
 sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroid.list
+#remove mutter files from list/waydroid.list
+sudo sed -i "/mutter/d" list/waydroid.list
+source /etc/lsb-release
+if [ "$DISTRIB_ID" = "Kylin" ];then
+	cat list/mutter.list |sudo tee -a list/waydroid.list 1>/dev/null
+fi
+
 num=`ls debian -l |grep ^d |wc -l`
 if [ $num -ne 1 ];then
 	echo "Error: more than one directory like openfde-x.x.x exist. please remove the useless one"
