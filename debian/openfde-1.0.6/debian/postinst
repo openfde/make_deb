@@ -24,6 +24,7 @@ fi
 sudo sysctl -p
 echo "Step 3: load the image"
 if [ -e /usr/bin/waydroid ];then
+    sudo systemctl daemon-reload 1>/dev/null 2>&1
 	sudo waydroid session stop 1>/dev/null 2>&1
 	sudo systemctl stop waydroid-container 1>/dev/null 2>&1
 	sudo rm -rf /var/lib/waydroid
