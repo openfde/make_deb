@@ -15,6 +15,7 @@ Depends: ${misc:Depends},
          mutter,
          lxc,
          tigervnc-standalone-server,
+	 ubuntu-desktop,
          ibus, 
          libx11-dev, 
          i3-wm
