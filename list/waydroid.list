@@ -10,4 +10,3 @@
 /usr/share/polkit-1/actions/id.waydro.Container.policy
 /usr/share/dbus-1/system-services/id.waydro.Container.service
 /usr/lib/systemd/system/waydroid-container.service
-/usr/local/lib/python3.8/dist-packages/gbinder.cpython-38-aarch64-linux-gnu.so
