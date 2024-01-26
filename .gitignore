@@ -5,3 +5,11 @@ debian/openfde*/debian/openfde/DEBIAN/md5sums
 *tigervnc.tar.gz
 *waydroid_image.tar
 *waydroid.tar
+debian/openfde_*.debian.tar.xz
+debian/openfde_*.dsc
+debian/openfde_*.buildinfo
+debian/openfde_*.changes
+debian/openfde_*.deb
+debian/openfde_*tar.xz
+debian/openfde-*/debian/control
+

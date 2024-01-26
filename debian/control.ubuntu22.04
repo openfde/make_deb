@@ -1,0 +1,23 @@
+Source: openfde
+Section: devel
+Priority: optional
+Maintainer: openfde <openfde@openfde>
+Build-Depends: debhelper (>=11~)
+Standards-Version: 4.1.4
+Homepage: openfde.com
+
+Package: openfde
+Architecture: arm64
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         libibus-1.0-5, 
+         python3-pip,
+         mutter,
+         lxc,
+         tigervnc-standalone-server,
+         ibus, 
+         libx11-dev, 
+         i3-wm
+Recommends: ${misc:Depends}, 
+         tigervnc-common, 
+Description: Fusion Desktop Environment

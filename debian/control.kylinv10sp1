@@ -10,16 +10,16 @@ Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
-Recommends: ${misc:Depends}, 
          tigervnc-standalone-server,
          libibus-1.0-5, 
          ibus, 
          libx11-dev, 
-         tigervnc-common, 
-         tigervnc-viewer, 
          lxc,
          i3-wm,
-         mutter,
-         konsole,
          python3-pip
+Recommends: ${misc:Depends}, 
+         tigervnc-common, 
+         tigervnc-viewer, 
+         mutter,
+         konsole
 Description: Fusion Desktop Environment

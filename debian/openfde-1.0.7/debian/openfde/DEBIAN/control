@@ -1,0 +1,12 @@
+Package: openfde
+Version: 1.0.7-20240126kylin1
+Architecture: arm64
+Maintainer: openfde <openfde@openfde>
+Installed-Size: 836401
+Depends: tigervnc-standalone-server, libibus-1.0-5, ibus, libx11-dev, lxc, i3-wm, python3-pip
+Recommends: tigervnc-common, tigervnc-viewer, mutter, konsole
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: openfde.com
+Description: Fusion Desktop Environment
