@@ -15,10 +15,10 @@ Depends: ${misc:Depends},
          mutter,
          lxc,
          tigervnc-standalone-server,
-	 ubuntu-desktop,
          ibus, 
          libx11-dev, 
          i3-wm
 Recommends: ${misc:Depends}, 
-         tigervnc-common, 
+	 ubuntu-desktop,
+         tigervnc-common 
 Description: Fusion Desktop Environment
