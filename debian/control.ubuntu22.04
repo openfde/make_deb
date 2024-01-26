@@ -19,5 +19,6 @@ Depends: ${misc:Depends},
          libx11-dev, 
          i3-wm
 Recommends: ${misc:Depends}, 
-         tigervnc-common, 
+	 ubuntu-desktop,
+         tigervnc-common 
 Description: Fusion Desktop Environment
