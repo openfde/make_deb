@@ -9,14 +9,6 @@ sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop 1>/dev/null 2>&1
 sudo rm -rf /usr/share/xsessions/i3.desktop 1>/dev/null 2>&1
 sudo rm -rf /usr/share/xsessions/mutter.desktop 1>/dev/null 2>&1
 
-if [ ! -e /usr/bin/fde_wm ];then
-	source /etc/lsb-release
-	if [ "$DISTRIB_ID" = "Kylin" ];then
-		sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
-	else
-		sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
-	fi
-fi
 echo "Step 3: load the image"
 if [ -e /usr/bin/waydroid ];then
 	sudo systemctl daemon-reload 1>/dev/null 2>&1
@@ -51,6 +43,14 @@ sudo tar -xzf /usr/tigervnc.tar.gz -C /
 sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
 
 sudo tar -xf /usr/waydroid.tar -C /
+if [ ! -e /usr/bin/fde_wm ];then
+	source /etc/lsb-release
+	if [ "$DISTRIB_ID" = "Kylin" ];then
+		sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
+	else
+		sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+	fi
+fi
 sudo ldconfig
 sudo waydroid init -f
 if [ $? != 0 ];then
