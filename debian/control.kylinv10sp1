@@ -14,7 +14,6 @@ Depends: ${misc:Depends},
 	libibus-1.0-5, 
 	ibus, 
 	libx11-dev, 
-	fde-binder-dkms,
 	lxc,
 	i3-wm,
 	python3-pip
