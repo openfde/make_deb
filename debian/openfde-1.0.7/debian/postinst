@@ -9,6 +9,7 @@ if [ -e /usr/bin/fde_fs ];then
 fi
 echo "Step 2: config environments"
 sudo tar -xf /usr/fde.tar -C /
+sudo rm -rf /usr/fde.tar
 sudo sysctl -p
 
 sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop 1>/dev/null 2>&1
@@ -17,8 +18,7 @@ sudo rm -rf /usr/share/xsessions/mutter.desktop 1>/dev/null 2>&1
 
 echo "Step 3: load the image"
 if [ -e /usr/bin/waydroid ];then
-	sudo mv /var/lib/waydroid /tmp/waydroid && sudo rm -rf /tmp/waydroid
-	sudo mv /usr/share/waydroid-extra/images /tmp/images && rm -rf /tmp/images
+	sudo mv /var/lib/waydroid /tmp/waydroid && sudo rm -rf /tmp/waydroid 1>/dev/null 2>&1
 fi
 
 sudo tar -xf /usr/waydroid_image.tar -C /
@@ -41,58 +41,26 @@ if [ ! -e "/dev/fdeion" ];then
 	sudo umount vendorimg
 	sudo rmdir vendorimg 
 fi	
+sudo rm -rf /usr/waydroid_image.tar
 
-sudo tar -xzf /usr/tigervnc.tar.gz -C /
 sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
+sudo tar -xzf /usr/tigervnc.tar.gz -C /
+sudo rm -rf /usr/tigervnc.tar.gz
 
 sudo tar -xf /usr/waydroid.tar -C /
+sudo rm -rf /usr/waydroid.tar
 sudo systemctl daemon-reload 1>/dev/null 2>&1
-if [ ! -e /usr/bin/fde_wm ];then
-	source /etc/lsb-release
-	if [ "$DISTRIB_ID" = "Kylin" ];then
-
-sudo tar -xf /usr/waydroid_image.tar -C /
-
-if [ ! -e "/dev/fdeion" ];then
-	sudo mkdir vendorimg
-	sudo mount /usr/share/waydroid-extra/images/vendor.img vendorimg
-	if [ $? != 0 ];then
-		echo "Error: mount vendorimg failed"
-		sudo rm -rf /usr/fde.tar
-		sudo rm -rf /usr/waydroid.tar
-		sudo rm -rf /usr/fdeion.ko
-		sudo rm -rf /usr/waydroid_image.tar
-		sudo rm -rf /usr/tigervnc.tar.gz
-		exit 1
-	fi
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml 1>/dev/null 2>&1
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml 1>/dev/null 2>&1
-	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc 1>/dev/null 2>&1
-	sudo umount vendorimg
-	sudo rmdir vendorimg 
-fi	
-
-sudo tar -xzf /usr/tigervnc.tar.gz -C /
-sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
-
-sudo tar -xf /usr/waydroid.tar -C /
-sudo systemctl daemon-reload 1>/dev/null 2>&1
-if [ ! -e /usr/bin/fde_wm ];then
-	source /etc/lsb-release
-	if [ "$DISTRIB_ID" = "Kylin" ];then
-		sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
-	else
-		sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
-	fi
+source /etc/lsb-release
+sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 1>/dev/null 2>&1 
+if [ "$DISTRIB_ID" = "Kylin" ];then
+	sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
+else
+	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
 fi
 sudo ldconfig
 sudo waydroid init -f
 if [ $? != 0 ];then
 	echo "Error: load image failed"
-	sudo rm -rf /usr/fde.tar
-	sudo rm -rf /usr/waydroid.tar
-	sudo rm -rf /usr/waydroid_image.tar
-	sudo rm -rf /usr/tigervnc.tar.gz
 	exit 1
 fi
 
@@ -104,10 +72,5 @@ if [ ! -e /var/log/fde.log ];then
 	sudo touch /var/log/fde.log
 	sudo chmod a+wr /var/log/fde.log
 fi
-sudo rm -rf /usr/fde.tar
-sudo rm -rf /usr/waydroid.tar
-sudo rm -rf /usr/waydroid_image.tar
-sudo rm -rf /usr/tigervnc.tar.gz
 
 echo "Congratulations, the installation success, please logout and then relogin to the OpenFDE"
-
