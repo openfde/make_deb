@@ -1,7 +1,13 @@
-openfde (1.0.7-20240126kylin1) unstable; urgency=medium
+openfde (1.0.7-20240201kylin1) unstable; urgency=medium
 
-  * 优化linux融合应用鼠标显示
-  * 响应优化剪映编辑页面全屏显示申请 
+  * 优化linux融合应用启动画面等待时间，优化启动后的鼠标显示
+  * 在麒麟系统下使用fde-binder设备
+  * linux融合应用增加键盘输入模式，支持密码框输入
+  * 禁止全屏状态下通过鼠标唤出状态栏和导航栏，增加F11为全屏快捷键
+  * 修复微博和淘宝在某些页面有双标题栏的问题
+  * 修复部分网络异常问题，优化网络设置UI，不再阻塞操作
+  * 修复图库部分问题，优化图库操作体验
+
 
  -- warlice <warlice@warlicekylin>  Fri, 26 Jan 2024 13:31:43 +0800
 

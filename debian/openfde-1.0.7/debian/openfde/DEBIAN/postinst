@@ -1,33 +1,24 @@
 #!/bin/bash
 
 #step 1 install fde
-echo "Step 2: configure environment"
-sudo tar -xf /usr/fde.tar -C /
-
-sudo chown root:root /usr/bin/fde_ctrl
-# #sudo chown root:root /usr/bin/fde_session
-sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop
-sudo rm -rf /usr/share/xsessions/i3.desktop
-sudo rm -rf /usr/share/xsessions/mutter.desktop
-sudo tar -xf /usr/waydroid.tar -C /
-
-sudo ldconfig
-
-if [ ! -e /usr/bin/fde_wm ];then
-	source /etc/lsb-release
-	if [ "$DISTRIB_ID" = "Kylin" ];then
-		sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
-	else
-		sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
-	fi
+if [ -e /usr/bin/fde_ctrl ];then
+	sudo mv /usr/bin/fde_ctrl /tmp/fde_ctrl&& sudo rm -rf /tmp/fde_ctrl
 fi
+if [ -e /usr/bin/fde_fs ];then
+	sudo mv /usr/bin/fde_fs /tmp/fde_fs && sudo rm -rf /tmp/fde_fs
+fi
+echo "Step 2: config environments"
+sudo tar -xf /usr/fde.tar -C /
+sudo rm -rf /usr/fde.tar
 sudo sysctl -p
+
+sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop 1>/dev/null 2>&1
+sudo rm -rf /usr/share/xsessions/i3.desktop 1>/dev/null 2>&1
+sudo rm -rf /usr/share/xsessions/mutter.desktop 1>/dev/null 2>&1
+
 echo "Step 3: load the image"
 if [ -e /usr/bin/waydroid ];then
-    sudo systemctl daemon-reload 1>/dev/null 2>&1
-	sudo waydroid session stop 1>/dev/null 2>&1
-	sudo systemctl stop waydroid-container 1>/dev/null 2>&1
-	sudo rm -rf /var/lib/waydroid
+	sudo mv /var/lib/waydroid /tmp/waydroid && sudo rm -rf /tmp/waydroid 1>/dev/null 2>&1
 fi
 
 sudo tar -xf /usr/waydroid_image.tar -C /
@@ -44,34 +35,42 @@ if [ ! -e "/dev/fdeion" ];then
 		sudo rm -rf /usr/tigervnc.tar.gz
 		exit 1
 	fi
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml
-	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml 1>/dev/null 2>&1
+	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml 1>/dev/null 2>&1
+	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc 1>/dev/null 2>&1
 	sudo umount vendorimg
 	sudo rmdir vendorimg 
 fi	
+sudo rm -rf /usr/waydroid_image.tar
 
-sudo tar -xzf /usr/tigervnc.tar.gz -C /
 sudo pip3 install pyclip -i https://mirrors.aliyun.com/pypi/simple
+sudo tar -xzf /usr/tigervnc.tar.gz -C /
+sudo rm -rf /usr/tigervnc.tar.gz
 
+sudo tar -xf /usr/waydroid.tar -C /
+sudo rm -rf /usr/waydroid.tar
+sudo systemctl daemon-reload 1>/dev/null 2>&1
+source /etc/lsb-release
+sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 1>/dev/null 2>&1 
+if [ "$DISTRIB_ID" = "Kylin" ];then
+	sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
+else
+	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+fi
+sudo ldconfig
 sudo waydroid init -f
 if [ $? != 0 ];then
 	echo "Error: load image failed"
-	sudo rm -rf /usr/fde.tar
-	sudo rm -rf /usr/waydroid.tar
-	sudo rm -rf /usr/waydroid_image.tar
-	sudo rm -rf /usr/tigervnc.tar.gz
 	exit 1
 fi
 
+sudo waydroid session stop 1>/dev/null 2>&1
+sudo systemctl stop waydroid-container 1>/dev/null 2>&1
 sudo sed -i "/fde.log/d" /etc/profile
 sudo sed -i  '$a \export LOG_FILE=/var/log/fde.log'  /etc/profile
-sudo touch /var/log/fde.log
-sudo chmod a+wr /var/log/fde.log
-sudo rm -rf /usr/fde.tar
-sudo rm -rf /usr/waydroid.tar
-sudo rm -rf /usr/waydroid_image.tar
-sudo rm -rf /usr/tigervnc.tar.gz
+if [ ! -e /var/log/fde.log ];then
+	sudo touch /var/log/fde.log
+	sudo chmod a+wr /var/log/fde.log
+fi
 
 echo "Congratulations, the installation success, please logout and then relogin to the OpenFDE"
-
