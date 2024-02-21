@@ -1,3 +1,15 @@
+openfde (1.0.8-20240221kylin1) unstable; urgency=medium
+
+  * 修复toDesk崩溃问题
+  * 设置网络的子网掩码由长度改为具体掩码
+  * 快捷切换输入法支持
+  * 增加Alt+F4快捷关闭组合按键，修复安装程序不响应F11事件问题
+  * 蓝信和京东app频繁切换最大化问题
+  * 升级linux egl 到20.1.0,以支持dma_buf_query_modifier扩展
+  
+
+ -- warlice <warlice@warlice-kylin>  Wed, 21 Feb 2024 16:05:08 +0800
+
 openfde (1.0.7-20240201kylin1) unstable; urgency=medium
 
   * 优化linux融合应用启动画面等待时间，优化启动后的鼠标显示

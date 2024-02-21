@@ -7,7 +7,6 @@ if [ -z "$ver" ];then
 	exit 1
 fi
 
-sed -i "/gbinder.cpython/d" list/waydroid.list
 sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" > /tmp/gbinder.list
 n=`cat /tmp/gbinder.list |wc -l`
 if  [  $n = 0  ] ;then
@@ -23,12 +22,13 @@ fi
 dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " "`
 
 dst=debian/$dst_dir
-sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroid.list
-#remove mutter files from list/waydroid.list
-sudo sed -i "/mutter/d" list/waydroid.list
+sudo rm -rf list/waydroidlist
+sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroidlist
 source /etc/lsb-release
+cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
 if [ "$DISTRIB_ID" = "Kylin" ];then
-	cat list/mutter.list |sudo tee -a list/waydroid.list 1>/dev/null
+	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
+	cat list/egl.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 	cp -a debian/control.ubuntu22.04 ${dst}/debian/control
@@ -42,9 +42,7 @@ d=`date +%Y%m%d`
 sed -i "/ro.build.fingerprint/s/eng.electr.*/eng.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
 sed -i "/ro.vendor.build.fingerprint/s/eng.electr.*/eng.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
 sed -i "/ro.build.display.id/s/eng.electr.*/eng.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
-tar -zcvpf $dst/waydroid.tar -T list/waydroid.list
-sudo sed -i "/mutter/d" list/waydroid.list
-sudo sed -i "/gbinder.cpython/d" list/waydroid.list
+tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 
 #step 2 clone container
 
