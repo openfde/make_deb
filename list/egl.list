@@ -28,12 +28,12 @@
 /usr/include/GL/glxext.h
 /usr/include/GL/gl.h
 /usr/share/drirc.d/00-mesa-defaults.conf
-/usr/lib/aarch64-linux-gnu/libxatracker.so.2.5.0
+/usr/lib/aarch64-linux-gnu/libxatracker.so.2.5.1
 /usr/lib/aarch64-linux-gnu/libxatracker.so.2
 /usr/lib/aarch64-linux-gnu/libxatracker.so
-/usr/lib/aarch64-linux-gnu/libgbm.so.1.0.0
+/usr/lib/aarch64-linux-gnu/libgbm.so.1.0.1
 /usr/lib/aarch64-linux-gnu/libgbm.so
-/usr/lib/aarch64-linux-gnu/libGLESv1_CM.so.1.1.0
+/usr/lib/aarch64-linux-gnu/libGLESv1_CM.so.1.2.0
 /usr/lib/aarch64-linux-gnu/libGLESv1_CM.so.1
 /usr/lib/aarch64-linux-gnu/libGLESv1_CM.so
 /usr/lib/aarch64-linux-gnu/libEGL.so.1.2.0
@@ -43,7 +43,7 @@
 /usr/lib/aarch64-linux-gnu/libGLESv2.so.2
 /usr/lib/aarch64-linux-gnu/libGLESv2.so
 /usr/lib/aarch64-linux-gnu/libgbm.so.1
-/usr/lib/aarch64-linux-gnu/libGL.so.1.2.0
+/usr/lib/aarch64-linux-gnu/libGL.so.1.8.0
 /usr/lib/aarch64-linux-gnu/libGL.so.1
 /usr/lib/aarch64-linux-gnu/libGL.so
 /usr/lib/aarch64-linux-gnu/libglapi.so.0.0.0

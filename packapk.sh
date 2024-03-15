@@ -20,7 +20,7 @@ if [ $? != 0 ];then
 	echo "Error: copy system failed"
 	exit 1
 fi
-sudo rm -rf  system/system/product/app/LatinIME/
+#sudo rm -rf  system/system/product/app/LatinIME/
 sudo rm -rf system/system/media/bootanimation.zip
 sudo mkdir system/system/product/app/iflytek
 #sudo mkdir system/volumes
