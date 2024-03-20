@@ -1,12 +1,23 @@
-openfde (1.0.8-20240221kylin1) unstable; urgency=medium
+openfde (1.1.0-20240320kylin1u) unstable; urgency=medium
 
-  * 修复toDesk崩溃问题
+  * 替换x100 图形纹理提交方案为dmabuf，提高其运行性能。
+  * 修复京东不响应F11的问题 
+  * UI整体更新
+  * 任务栏上的应用反复点击能准确隐藏和显示
+  * 修复app兼容性问题 
+
+ -- warlice <warlice@warlice-kylin>  Wed, 20 Mar 2024 18:03:18 +0800
+
+openfde (1.0.8-20240226kylin3) unstable; urgency=medium
+
+  * 修复toDesk等app崩溃问题
   * 设置网络的子网掩码由长度改为具体掩码
   * 快捷切换输入法支持
   * 增加Alt+F4快捷关闭组合按键，修复安装程序不响应F11事件问题
-  * 蓝信和京东app频繁切换最大化问题
-  * 升级linux egl 到20.1.0,以支持dma_buf_query_modifier扩展
-  
+  * 升级linux egl 到20.1.0,以支持egl_image_dma_buf_import_modifiers扩展
+  * 修复京东等app频繁切换最大化问题
+  * 修复微博按下F11闪退问题
+  * USB转往口设备的适配优化
 
  -- warlice <warlice@warlice-kylin>  Wed, 21 Feb 2024 16:05:08 +0800
 
