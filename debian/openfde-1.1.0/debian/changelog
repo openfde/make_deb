@@ -1,4 +1,4 @@
-openfde (1.1.0-20240320kylin1u) unstable; urgency=medium
+openfde (1.1.0-20240325kylin1) unstable; urgency=medium
 
   * 替换x100 图形纹理提交方案为dmabuf，提高其运行性能。
   * 修复京东不响应F11的问题 
