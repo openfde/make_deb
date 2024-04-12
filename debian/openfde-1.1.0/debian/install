@@ -1,4 +1,4 @@
-fde.tar /usr/
-waydroid.tar /usr/
-waydroid_image.tar /usr/
-tigervnc.tar.gz    /usr/
+fde.tar /usr/openfde/
+waydroid.tar /usr/openfde/
+waydroid_image.tar /usr/openfde/
+tigervnc.tar.gz    /usr/openfde/
