@@ -18,9 +18,10 @@ Depends: ${misc:Depends},
 	fde-binder-dkms,
 	gnome-settings-daemon-common,
 	gsettings-desktop-schemas (>=3.33.0),
+	libmutter-6-0,
 	i3-wm,
+	ddcutil,	
 	python3-pip
-
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
 	tigervnc-viewer, 
