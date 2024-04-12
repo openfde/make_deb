@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo waydroid session stop 1>/dev/null 2>&1 
+sudo systemctl daemon-reload 2>/dev/null
+sudo systemctl stop waydroid-container 1>/dev/null 2>&1
+sudo rm -rf /usr/share/waydroid-extra/images 1>/dev/null 2>&1
+sudo rm -rf /var/lib/waydroid/ 1>/dev/null 2>&1

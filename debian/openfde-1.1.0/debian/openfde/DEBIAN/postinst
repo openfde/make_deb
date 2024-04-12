@@ -64,6 +64,8 @@ if [ $? != 0 ];then
 	exit 1
 fi
 
+find /home -name settings_global.xml 2>/dev/null |xargs  sed -i "s/device_name\".*defaultSysSet/device_name\" value=\"OpenFDE arm64 device\" package=\"root\" defaultValue=\"OpenFDE arm64 device\" defaultSysSet/" 1>/dev/null 2>&1
+
 sudo waydroid session stop 1>/dev/null 2>&1
 sudo systemctl stop waydroid-container 1>/dev/null 2>&1
 sudo sed -i "/fde.log/d" /etc/profile

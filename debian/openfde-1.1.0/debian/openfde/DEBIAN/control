@@ -1,9 +1,9 @@
 Package: openfde
-Version: 1.1.0-20240325kylin1
+Version: 1.1.0-20240326kylin2
 Architecture: arm64
 Maintainer: openfde <openfde@openfde>
-Installed-Size: 907376
-Depends: tigervnc-standalone-server, libibus-1.0-5, ibus, libx11-dev, lxc, fde-binder-dkms, i3-wm, python3-pip
+Installed-Size: 906581
+Depends: tigervnc-standalone-server, libibus-1.0-5, ibus, libx11-dev, lxc, fde-binder-dkms, gnome-settings-daemon-common, gsettings-desktop-schemas (>= 3.33.0), libmutter-6-0, i3-wm, python3-pip
 Recommends: tigervnc-common, tigervnc-viewer, mutter, konsole
 Section: devel
 Priority: optional

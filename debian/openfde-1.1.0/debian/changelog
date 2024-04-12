@@ -1,10 +1,12 @@
-openfde (1.1.0-20240325kylin1) unstable; urgency=medium
+openfde (1.1.0-20240326kylin2) unstable; urgency=medium
 
   * 替换x100 图形纹理提交方案为dmabuf，提高其运行性能。
   * 修复京东不响应F11的问题 
   * UI整体更新
   * 任务栏上的应用反复点击能准确隐藏和显示
   * 修复app兼容性问题 
+  * 设备名改为OpenFDE arm64 device
+  * 开机界面提示信息改为OpenFDE正在启动中 
 
  -- warlice <warlice@warlice-kylin>  Wed, 20 Mar 2024 18:03:18 +0800
 
