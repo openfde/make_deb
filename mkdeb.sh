@@ -7,6 +7,11 @@ if [ -z "$ver" ];then
 	exit 1
 fi
 
+if [ ! -e ~/tigervnc-standalone-server_1.10.1+dfsg-3_arm64.deb ];then
+	echo "Error: ~/gitervnc-standalone-server_1.10.1+dfsg-3_arm64.deb not exist. please build the project fde_tigervncserver"
+	exit 1
+fi
+
 sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" > /tmp/gbinder.list
 n=`cat /tmp/gbinder.list |wc -l`
 if  [  $n = 0  ] ;then
@@ -60,8 +65,12 @@ if [ "$choice" = "y" ];then
 fi
 
 #step 3 make src.xz
+sudo rm -rf /tmp/tigervnc-standalone
+mkdir /tmp/tigervnc-standalone
+sudo dpkg-deb -x ~/tigervnc-standalone-server_1.10.1+dfsg-3_arm64.deb /tmp/tigervnc-standalone
+sudo tar -cvpf $dst/tigervnc.tar.gz -C /tmp/tigervnc-standalone usr
+
 echo "tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  tigervnc.tar.gz waydroid_image.tar  waydroid.tar"
-sudo cp -a tigervnc.tar.gz $dst/tigervnc.tar.gz
 tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  tigervnc.tar.gz waydroid_image.tar  waydroid.tar
 pushd $dst
 #step 4 fill changes
