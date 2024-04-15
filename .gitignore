@@ -3,6 +3,11 @@ debian/openfde*/debian/files
 debian/openfde*/debian/openfde/DEBIAN/md5sums
 debian/openfde*/debian/openfde.debhelper.log
 *fde.tar
+waydroidlist
+system.img
+systemimg
+vendor.img
+vendorimg
 *tigervnc.tar.gz
 *waydroid_image.tar
 *waydroid.tar

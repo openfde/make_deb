@@ -1,3 +1,15 @@
+openfde (1.1.1-20240326kylin1ubuntu1) UNRELEASED; urgency=medium
+
+  * 默认设置设备名为OpenFDE device 
+  * 为android应用自动将鼠标事件模拟为touch事件
+  * 默认添加兼容性框架配置文件
+  * linux 卷挂载点使用人可阅读的挂载点
+  * 增加显示器亮度调整功能
+  * 修复图库裁剪后图片缺少元数据问题
+
+
+ -- warlice <warlice@warlice-kylin>  Fri, 12 Apr 2024 19:02:27 +0800
+
 openfde (1.1.0-20240326kylin2) unstable; urgency=medium
 
   * 替换x100 图形纹理提交方案为dmabuf，提高其运行性能。
