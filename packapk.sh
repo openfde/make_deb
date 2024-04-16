@@ -6,7 +6,7 @@ sudo rm -rf orig system vendor
 mkdir orig -p
 sudo mount system.img orig
 systemUsed=`df -m |grep -w orig | awk -F " " '{print $3}'`
-actualUsed=`expr $systemUsed + 200`
+actualUsed=`expr $systemUsed + 350`
 echo "dd if=/dev/zero of=systemimg bs=1M count=$actualUsed"
 dd if=/dev/zero of=systemimg bs=1M count=$actualUsed
 sudo mkfs.ext4 systemimg
