@@ -1,7 +1,6 @@
 /usr/bin/fde_ctrl
 /usr/bin/fde_fs
 /usr/bin/fde_brightness
-/usr/share/ukui-greeter/images/badges/fde_badge.svg
 /usr/bin/fde-set-ime-engine
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
@@ -13,4 +12,3 @@
 /lib/systemd/system-sleep/openfde
 /lib/pm-utils/power.d/99openfde
 /usr/share/lightdm/lightdm.conf.d/96-disable-autologin-lock.conf
-/usr/share/backgrounds/openfde.png
