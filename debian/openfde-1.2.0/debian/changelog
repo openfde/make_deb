@@ -1,4 +1,12 @@
-openfde (1.1.1-20240326kylin1ubuntu1) UNRELEASED; urgency=medium
+openfde (1.2.0-20240507kylin2) unstable; urgency=medium
+
+  * gps可设置地址
+  * 滑轮模拟成触摸滑动
+  * 修复腾讯会议无法播放录制视频问题
+
+ -- warlice <warlice@warlice-kylin>  Mon, 06 May 2024 18:55:41 +0800
+
+openfde (1.1.1-20240416kylin1) unstable; urgency=medium
 
   * 默认设置设备名为OpenFDE device 
   * 为android应用自动将鼠标事件模拟为touch事件
@@ -7,8 +15,7 @@ openfde (1.1.1-20240326kylin1ubuntu1) UNRELEASED; urgency=medium
   * 增加显示器亮度调整功能
   * 修复图库裁剪后图片缺少元数据问题
 
-
- -- warlice <warlice@warlice-kylin>  Fri, 12 Apr 2024 19:02:27 +0800
+ -- openfde <openfde@openfde>  Mon, 15 Apr 2024 14:32:23 +0800
 
 openfde (1.1.0-20240326kylin2) unstable; urgency=medium
 
