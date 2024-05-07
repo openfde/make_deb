@@ -16,6 +16,7 @@ Depends: ${misc:Depends},
 	libx11-dev, 
 	lxc,
 	i3-wm,
+	ddcutil,
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
