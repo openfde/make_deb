@@ -4,7 +4,6 @@
 /usr/bin/fde-set-ime-engine
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
-/usr/bin/fde_utils
 /etc/sysctl.conf
 /etc/i3/config
 /usr/bin/ibus-fdeime
