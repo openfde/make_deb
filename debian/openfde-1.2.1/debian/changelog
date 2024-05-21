@@ -1,8 +1,20 @@
-openfde (1.2.0-20240507kylin2) unstable; urgency=medium
+openfde (1.2.1-20240520kylin1) UNRELEASED; urgency=medium
+
+  * 修复原神崩溃
+  * 修复linux融合应用切换输入法后，滚轮无效
+  * 静音符号不准确，wifi网络被挤压看不到未链接网络问题
+  * 图库新增wexin图片发送功能
+  * 优化网络状态监听机制
+
+ -- warlice <warlice@warlice-kylin>  Mon, 20 May 2024 18:56:30 +0800
+
+openfde (1.2.0-20240510kylin1) unstable; urgency=medium
 
   * gps可设置地址
   * 滑轮模拟成触摸滑动
   * 修复腾讯会议无法播放录制视频问题
+  * 删除开机动画
+  * 增加返回功能按键F8
 
  -- warlice <warlice@warlice-kylin>  Mon, 06 May 2024 18:55:41 +0800
 
