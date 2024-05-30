@@ -21,11 +21,11 @@ Depends: ${misc:Depends},
 	libmutter-6-0,
 	i3-wm,
 	wl-clipboard,
+	xclip,
 	ddcutil,	
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
 	tigervnc-viewer, 
-	mutter,
-	konsole
+	mutter
 Description: Fusion Desktop Environment
