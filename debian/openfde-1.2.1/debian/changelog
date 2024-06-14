@@ -1,12 +1,15 @@
-openfde (1.2.1-20240520kylin1) UNRELEASED; urgency=medium
+openfde (1.2.1-20240611kylin2) unstable; urgency=medium
 
   * 修复原神崩溃
   * 修复linux融合应用切换输入法后，滚轮无效
   * 静音符号不准确，wifi网络被挤压看不到未链接网络问题
   * 图库新增wexin图片发送功能
   * 优化网络状态监听机制
+  * 修复部分应用在非全屏模式下显示不正常问题
+  * 修复两个显示器扩展模式下fde无法启动问题
+  * 修复鼠标偶尔会消失的问题
 
- -- warlice <warlice@warlice-kylin>  Mon, 20 May 2024 18:56:30 +0800
+ -- warlice <warlice@warlice-kylin>  Wed, 22 May 2024 17:55:04 +0800
 
 openfde (1.2.0-20240510kylin1) unstable; urgency=medium
 
