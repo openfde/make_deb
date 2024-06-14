@@ -31,8 +31,8 @@ sudo rm -rf list/waydroidlist
 sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroidlist
 source /etc/lsb-release
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
-cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 if [ "$DISTRIB_ID" = "Kylin" ];then
+	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/egl.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylin.list |sudo tee -a list/waydroidlist  1>/dev/null
@@ -40,6 +40,7 @@ if [ "$DISTRIB_ID" = "Kylin" ];then
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 	cp -a debian/control.ubuntu22.04 ${dst}/debian/control
 elif [ "$DISTRIB_ID" == "uos" ] ;then
+	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.uos20eagle ${dst}/debian/control
 fi
 
