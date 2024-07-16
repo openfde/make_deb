@@ -15,12 +15,13 @@ Depends: ${misc:Depends},
 	ibus, 
 	libx11-dev, 
 	lxc,
-	i3-wm,
+	xclip,
 	ddcutil,
+	i3-wm,
+	python3-requests,
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
-	tigervnc-viewer, 
 	mutter,
-	konsole
+	tigervnc-viewer 
 Description: Fusion Desktop Environment

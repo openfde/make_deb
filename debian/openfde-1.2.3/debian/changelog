@@ -1,3 +1,17 @@
+openfde (1.2.3-20240716kylin1) UNRELEASED; urgency=medium
+
+  * 新增文件夹融合
+  * 新增音量控制融合
+  * 修复蓝信视频横屏问题
+  * 调整了滑轮滑动列表的速度
+  * 修复wps创建的文件，未能进入mediaprovider数据库
+  * 修复第一次安装文件浏览器点击根文件系统崩溃的问题
+  * 修复vnc应用不能连续输入问题
+  * 修复应用模式下，todesk有鼠标移动结界问题
+  * 修复部分应用获取gps数据不对问题
+
+ -- warlice <warlice@warlice-kylin>  Tue, 16 Jul 2024 14:33:32 +0800
+
 openfde (1.2.1-20240611kylin2) unstable; urgency=medium
 
   * 修复原神崩溃
