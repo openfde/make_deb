@@ -1,3 +1,15 @@
+openfde (1.3.0-20240909kylin2) UNRELEASED; urgency=medium
+  * 新增JM9100 gpu支持
+  * 新增开机向导
+  * 新增音频设备选择功能
+  * 映射了主机hosts文件到FDE
+  * 优化了FDE内部设备识别信息
+  * 优化了FDE版本的显示方式
+  * 修复向右放大窗口概率变成拖动窗口
+  * 支持双指缩放和ctrl按键加鼠标滑轮模拟缩放
+
+ -- warlice <warlice@warlice-kylin>  Mon, 09 Sep 2024 15:39:32 +0800
+
 openfde (1.2.3-20240716kylin1) UNRELEASED; urgency=medium
 
   * 新增文件夹融合
@@ -10,7 +22,7 @@ openfde (1.2.3-20240716kylin1) UNRELEASED; urgency=medium
   * 修复应用模式下，todesk有鼠标移动结界问题
   * 修复部分应用获取gps数据不对问题
 
- -- warlice <warlice@warlice-kylin>  Tue, 16 Jul 2024 14:33:32 +0800
+ -- warlice <warlice@warlice-kylin>  Mon, 09 Sep 2024 12:08:49 +0800
 
 openfde (1.2.1-20240611kylin2) unstable; urgency=medium
 

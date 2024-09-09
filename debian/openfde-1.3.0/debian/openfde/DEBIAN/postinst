@@ -77,6 +77,10 @@ if [ ! -e /var/log/fde.log ];then
 	sudo touch /var/log/fde.log
 	sudo chmod a+wr /var/log/fde.log
 fi
+sudo mkdir -p /var/lib/fde/sockets
+sudo touch /var/log/fde.log
+sudo chmod a+wr /var/log/fde.log
+sudo chmod a+wrx /var/lib/fde -R
 echo 100 >> /tmp/fde_installing_process
 sudo rm -rf /usr/openfde
 sudo rm -rf  /tmp/fde_installing_process

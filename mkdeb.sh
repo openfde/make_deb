@@ -34,7 +34,6 @@ cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
 if [ "$DISTRIB_ID" = "Kylin" ];then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
-	cat list/egl.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylin.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
