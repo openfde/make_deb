@@ -49,9 +49,7 @@ fi
 echo "Step 1: will tar file from the below list"
 tar -zcvpf $dst/fde.tar -T list/fde.list
 d=`date +%Y%m%d`
-sed -i "/ro.build.fingerprint/s/user.electr.*/user.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
-sed -i "/ro.vendor.build.fingerprint/s/user.electr.*/user.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
-sed -i "/ro.build.display.id/s/user.electr.*/user.electr.$d.$ver:user\/release-keys\")/" /usr/lib/waydroid/tools/helpers/images.py
+sed -i "/ro.openfde.version/s/ro.openfde.version.*/ro.openfde.version=$ver-$d\")/" /usr/lib/waydroid/tools/helpers/images.py
 tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 
 #step 2 clone container
