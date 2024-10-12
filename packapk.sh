@@ -35,6 +35,7 @@ if [ $? != 0 ];then
 	echo "Error: copy yingyongbao failed"
 	exit 1
 fi
+df -h |grep system
 sudo umount orig
 sudo umount system
 
@@ -48,6 +49,7 @@ if [ $? != 0 ];then
 	echo "Error: copy vendor failed"
 	exit 1
 fi
+df -h |grep vendor
 #install x100 libs
 #sudo cp -a install_new/vendor/* vendor
 sudo umount orig
