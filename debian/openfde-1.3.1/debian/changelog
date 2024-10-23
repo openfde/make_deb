@@ -1,15 +1,17 @@
-openfde (1.3.1-20241011kylin3) UNRELEASED; urgency=medium
+openfde (1.3.1-20241023kylin1) UNRELEASED; urgency=medium
   * 新增文件管理器中通过分享直接发送微信（单张、多张）
   * 新增图库部分文字英文翻译
   * 优化鼠标移动反应速度
   * 新增平行视界功能，目前仅对部分app生效
   * 状态栏新增输入法切换按钮。
   * 新增应用宝静默更新应用功能。
-  * 修复部分应用启动界面的弹出窗口超出应用主窗口 issue135。
-  * 修复部分通知不能关闭问题 issue113。
-  * 修改部分服务名称
+  * 修复部分应用启动界面的弹出窗口超出应用主窗口
+  * 修复部分通知不能关闭问题
+  * 应用模式下不使用默认wayland server套接字
+  * 优化兼容性框架读取性能 
+  * 虚拟桌面导航
 
- -- warlice <warlice@warlice-kylin>  Fri, 11 Oct 2024 18:32:04 +0800
+ -- warlice <warlice@warlice-kylin>  Wed, 23 Oct 2024 12:14:18 +0800
 
 openfde (1.3.0-20240909kylin2) UNRELEASED; urgency=medium
   * 新增JM9100 gpu支持
