@@ -78,6 +78,7 @@ if [ ! -e /var/log/fde.log ];then
 	sudo chmod a+wr /var/log/fde.log
 fi
 sudo mkdir -p /var/lib/fde/sockets
+sudo chmod a+wr /var/lib/fde/sockets
 sudo touch /var/log/fde.log
 sudo chmod a+wr /var/log/fde.log
 sudo chmod a+wrx /var/lib/fde -R
