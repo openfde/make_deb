@@ -22,10 +22,10 @@ Depends: ${misc:Depends},
 	xclip,
 	ddcutil,
 	i3-wm,
+	mutter,
 	python3-requests,
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
-	mutter,
 	tigervnc-viewer 
 Description: Fusion Desktop Environment

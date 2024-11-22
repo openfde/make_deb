@@ -21,15 +21,14 @@ Depends: ${misc:Depends},
 	fde-binder-dkms,
 	gnome-settings-daemon-common,
 	gsettings-desktop-schemas (>=3.33.0),
-	libmutter-6-0,
 	i3-wm,
 	wl-clipboard,
+	mutter,
 	xclip,
 	fdenavi,
 	ddcutil,	
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
-	tigervnc-viewer, 
-	mutter
+	tigervnc-viewer
 Description: Fusion Desktop Environment
