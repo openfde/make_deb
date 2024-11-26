@@ -12,6 +12,7 @@ Multi-Arch: foreign
 Depends: ${misc:Depends},
 	tigervnc-standalone-server,
 	libibus-1.0-5, 
+	libmutter-6-0,
 	ibus, 
 	libx11-dev, 
 	lxc,
@@ -23,12 +24,12 @@ Depends: ${misc:Depends},
 	gsettings-desktop-schemas (>=3.33.0),
 	i3-wm,
 	wl-clipboard,
-	mutter,
 	xclip,
 	fdenavi,
 	ddcutil,	
 	python3-pip
 Recommends: ${misc:Depends}, 
 	tigervnc-common, 
-	tigervnc-viewer
+	tigervnc-viewer,
+	mutter
 Description: Fusion Desktop Environment
