@@ -43,7 +43,6 @@ fi
 sudo rm -rf /usr/openfde/waydroid_image.tar
 echo 55 >> /tmp/fde_installing_process
 
-sudo pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
 echo 60 >> /tmp/fde_installing_process
 sudo tar -xf /usr/openfde/tigervnc.tar.gz -C /
 sudo rm -rf /usr/openfde/tigervnc.tar.gz
@@ -51,6 +50,7 @@ echo 70 >> /tmp/fde_installing_process
 
 sudo tar -xf /usr/openfde/waydroid.tar -C /
 sudo rm -rf /usr/openfde/waydroid.tar
+sudo pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
 echo 80 >> /tmp/fde_installing_process
 sudo systemctl daemon-reload 1>/dev/null 2>&1
 source /etc/lsb-release

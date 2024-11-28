@@ -1,4 +1,4 @@
-openfde (1.3.2-20241126kylin5) UNRELEASED; urgency=medium
+openfde (1.3.2-20241128kylin1) UNRELEASED; urgency=medium
   * 新增pid max 检测
   * mutter仅仅打包插件库
   * 文件夹融合禁止从主机上删除文件
@@ -11,8 +11,8 @@ openfde (1.3.2-20241126kylin5) UNRELEASED; urgency=medium
   * 文件管理器优化界面
   * 开机向导新增预装软件功能 
   * 优化虚拟分辨率配置
-
- -- warlice <warlice@warlice-kylin>  Tue, 26 Nov 2024 19:07:25 +0800
+  
+ -- warlice <warlice@warlice-kylin>  Thu, 28 Nov 2024 11:36:37 +0800
 
 openfde (1.3.1-20241023kylin1) UNRELEASED; urgency=medium
   * 新增文件管理器中通过分享直接发送微信（单张、多张）
