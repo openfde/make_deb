@@ -55,7 +55,11 @@ echo 80 >> /tmp/fde_installing_process
 sudo systemctl daemon-reload 1>/dev/null 2>&1
 source /etc/lsb-release
 sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 1>/dev/null 2>&1 
-sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+if [ "$DISTRIB_ID" = "Kylin" ];then
+	sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
+else
+	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+fi
 echo 90 >> /tmp/fde_installing_process
 sudo ldconfig
 sudo waydroid init -f
