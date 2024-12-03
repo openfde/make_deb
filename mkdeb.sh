@@ -31,9 +31,9 @@ sudo rm -rf list/waydroidlist
 sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroidlist
 source /etc/lsb-release
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
+cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 if [ "$DISTRIB_ID" = "Kylin" ];then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
-	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/kylinmutter.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylinfde.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
