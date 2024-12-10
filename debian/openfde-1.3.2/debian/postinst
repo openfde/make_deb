@@ -24,7 +24,9 @@ if [ -e /usr/bin/waydroid ];then
 fi
 
 sudo tar -xf /usr/openfde/waydroid_image.tar -C /
-echo 45 >> /tmp/fde_installing_process
+echo 35 >> /tmp/fde_installing_process
+sudo rm -rf /usr/openfde/waydroid_image.tar
+echo 40 >> /tmp/fde_installing_process
 
 if [ ! -e "/dev/fdeion" ];then
 	sudo mkdir vendorimg
@@ -40,19 +42,18 @@ if [ ! -e "/dev/fdeion" ];then
 	sudo umount vendorimg
 	sudo rmdir vendorimg 
 fi	
-sudo rm -rf /usr/openfde/waydroid_image.tar
-echo 55 >> /tmp/fde_installing_process
-
-echo 60 >> /tmp/fde_installing_process
-sudo tar -xf /usr/openfde/tigervnc.tar.gz -C /
-sudo rm -rf /usr/openfde/tigervnc.tar.gz
-echo 70 >> /tmp/fde_installing_process
 
 sudo tar -xf /usr/openfde/waydroid.tar -C /
+echo 45 >> /tmp/fde_installing_process
 sudo rm -rf /usr/openfde/waydroid.tar
-sudo pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
+echo 50 >> /tmp/fde_installing_process
+
+sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install  /usr/openfde/gbinder-python-1.0.0.tar.gz
+echo 70 >> /tmp/fde_installing_process
+sudo rm -rf /usr/openfde/gbinder-python-1.0.0.tar.gz
+
+sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
 echo 80 >> /tmp/fde_installing_process
-sudo systemctl daemon-reload 1>/dev/null 2>&1
 source /etc/lsb-release
 sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 1>/dev/null 2>&1 
 if [ "$DISTRIB_ID" = "Kylin" ];then
@@ -60,8 +61,9 @@ if [ "$DISTRIB_ID" = "Kylin" ];then
 else
 	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
 fi
-echo 90 >> /tmp/fde_installing_process
+echo 85 >> /tmp/fde_installing_process
 sudo ldconfig
+sudo systemctl daemon-reload 1>/dev/null 2>&1
 sudo waydroid init -f
 if [ $? != 0 ];then
 	echo "Error: load image failed"
@@ -78,10 +80,9 @@ if [ ! -e /var/log/fde.log ];then
 	sudo chmod a+wr /var/log/fde.log
 fi
 sudo mkdir -p /var/lib/fde/sockets
-sudo chmod a+wr /var/lib/fde/sockets
+sudo chmod a+wrx /var/lib/fde/sockets
 sudo touch /var/log/fde.log
 sudo chmod a+wr /var/log/fde.log
-sudo chmod a+wrx /var/lib/fde -R
 echo 100 >> /tmp/fde_installing_process
 sudo rm -rf /usr/openfde
 sudo rm -rf  /tmp/fde_installing_process

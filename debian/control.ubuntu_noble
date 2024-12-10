@@ -1,0 +1,27 @@
+Source: openfde
+Section: devel
+Priority: optional
+Maintainer: openfde <openfde@openfde>
+Build-Depends: debhelper (>=11~)
+Standards-Version: 4.1.4
+Homepage: openfde.com
+
+Package: openfde
+Architecture: arm64
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         libibus-1.0-5, 
+         python3-pip,
+         mutter,
+         zenity,
+         lxc,
+         ibus, 
+         fuse3, 
+         libxrender1, 
+         wl-clipboard,
+         xclip,
+         gcc,
+         ddcutil
+Recommends: ${misc:Depends}, 
+	 ubuntu-desktop
+Description: Fusion Desktop Environment

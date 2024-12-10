@@ -4,6 +4,10 @@
 /usr/lib/libglibutil.so.1.0.71
 /usr/lib/libglibutil.so.1.0
 /usr/lib/libglibutil.so.1
+/usr/include/gbinder
+/usr/include/gutil
+/usr/lib/pkgconfig/libgbinder.pc
+/usr/lib/pkgconfig/libglibutil.pc
 /usr/lib/waydroid
 /usr/bin/waydroid
 /usr/share/dbus-1/system.d/id.waydro.Container.conf

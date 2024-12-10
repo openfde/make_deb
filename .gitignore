@@ -18,4 +18,5 @@ debian/openfde_*.changes
 debian/openfde_*.deb
 debian/openfde_*tar.xz
 debian/openfde-*/debian/control
+debian/openfde-*/gbinder-python*
 
