@@ -54,9 +54,9 @@ sudo rm -rf /usr/openfde/gbinder-python-1.0.0.tar.gz
 
 sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
 echo 80 >> /tmp/fde_installing_process
-source /etc/lsb-release
+source /etc/os-release
 sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 1>/dev/null 2>&1 
-if [ "$DISTRIB_ID" = "Kylin" ];then
+if [ "$ID" = "kylin" ];then
 	sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
 else
 	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
