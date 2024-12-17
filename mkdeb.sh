@@ -21,7 +21,15 @@ dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " "`
 
 dst=debian/$dst_dir
 sudo rm -rf list/waydroidlist
-source /etc/lsb-release
+if [ ! -e "/etc/lsb-release" ];then
+	uname -a |grep Debian 1>/dev/null 2>&1
+	if [ $? = 0 ];then
+		DISTRIB_ID="Debian"
+	fi
+	source /etc/os-release
+else
+	source /etc/lsb-release
+fi
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
 cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 if [ "$DISTRIB_ID" = "Kylin" ];then
@@ -29,6 +37,11 @@ if [ "$DISTRIB_ID" = "Kylin" ];then
 	cat list/kylinmutter.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylinfde.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
+elif [ "$DISTRIB_ID" = "Debian" ];then
+	if [ ! -e /usr/bin/dch ];then
+		sudo apt install devscripts -y
+	fi
+	cp -a debian/control.debian_$VERSION_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 	cp -a debian/control.ubuntu_$DISTRIB_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" == "uos" ] ;then
