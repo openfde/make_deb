@@ -1,9 +1,11 @@
 /usr/lib/libgbinder.so.1.1.34
 /usr/lib/libgbinder.so.1.1
 /usr/lib/libgbinder.so.1
+/usr/lib/libgbinder.so
 /usr/lib/libglibutil.so.1.0.71
 /usr/lib/libglibutil.so.1.0
 /usr/lib/libglibutil.so.1
+/usr/lib/libglibutil.so
 /usr/include/gbinder
 /usr/include/gutil
 /usr/lib/pkgconfig/libgbinder.pc
