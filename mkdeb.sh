@@ -85,7 +85,7 @@ popd
 #step 5 make debs
 dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " "`
 pushd debian/$dst_dir
-sudo dpkg-buildpackage -us -uc
+sudo DEB_BUILD_OPTIONS="parallel=4" dpkg-buildpackage -us -uc
 if [ $? != 0 ];then
 	echo "Error: make deb failed."
 	popd
