@@ -20,7 +20,7 @@ if [ -z "$fde_version" ];then
 	fde_version=`sudo apt search openfde 2>/dev/null |grep openfde -w |awk -F " " '{print $2}'`
 fi
 echo "step 1: downloading openfde debs"
-sudo apt download openfde
+sudo apt download openfde 2>/dev/null
 sudo rm -rf .images 1>/dev/null 2>&1
 set -e 
 mkdir .images
