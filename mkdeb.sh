@@ -57,9 +57,9 @@ d=`date +%Y%m%d`
 sed -i "/ro.openfde.version/s/ro.openfde.version.*/ro.openfde.version=$ver-$d\")/" /usr/lib/waydroid/tools/helpers/images.py
 tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 
-#step 2 clone container
+#step 2 pack images
 
-echo "Step 2: want to save a new android container y/n[n]?"
+echo "Step 2: want to repack android images from /usr/share/waydroid-extra/images? y/n[n]"
 read choice 
 if [ -z "$choice" ];then
 	choice=n

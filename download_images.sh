@@ -18,15 +18,17 @@ sudo apt update
 if [ -z "$fde_version" ];then
 	fde_version=`sudo apt search openfde 2>/dev/null |grep openfde -w |awk -F " " '{print $2}'`
 fi
+echo "step 1: downloading openfde debs"
 sudo apt download openfde
 sudo rm -rf .images 1>/dev/null 2>&1
 set -e 
 mkdir .images
+echo "step 2: extracting debs"
 dpkg-deb -x openfde_${fde_version}_arm64.deb .images
 pushd .images/usr/openfde
 popd 
 n=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " " |grep ^openfde |wc -l`
-if [ $n -ge 1 ];then
+if [ $n -gt 1 ];then
 	echo "Error: more than one openfde-x.x.x directory found located in debian"
 	exit 1
 fi
@@ -36,6 +38,7 @@ if [ -z "$dst_dir" ];then
 	exit 1
 fi
 cp -a .images/usr/openfde/waydroid_image.tar debian/$dst_dir
+echo "Tips: copy waydroid_image.tar to debian/$dst_dir successfully. Now you can run mkdeb.sh to make debs without repacking android images."
 sudo rm -rf .images
 sudo rm -rf openfde_${fde_version}_arm64.deb
 
