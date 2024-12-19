@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "first: update the source of debs"
 fde_version=`sudo apt search openfde 2>/dev/null |grep openfde -w |awk -F " " '{print $2}'`
 if [ -z "$fde_version" ];then
 	source /etc/os-release
