@@ -1,9 +1,7 @@
 #!/bin/bash
 
 fde_version=`sudo apt search openfde 2>/dev/null |grep openfde -w |awk -F " " '{print $2}'`
-if [ -n "$fde_version" ];then
-	sudo apt download openfde
-else
+if [ -z "$fde_version" ];then
 	source /etc/os-release
 	sudo apt-get install -y wget gpg
 	wget -qO-  http://openfde.com/keys/openfde.asc | gpg --dearmor > packages.openfde.gpg
@@ -17,6 +15,10 @@ else
   sudo tee /etc/apt/sources.list.d/openfde.list > /dev/null
 fi
 sudo apt update
+if [ -z "$fde_version" ];then
+	fde_version=`sudo apt search openfde 2>/dev/null |grep openfde -w |awk -F " " '{print $2}'`
+fi
+sudo apt download openfde
 sudo rm -rf .images 1>/dev/null 2>&1
 set -e 
 mkdir .images
