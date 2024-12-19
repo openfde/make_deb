@@ -15,21 +15,25 @@ else
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/packages.openfde.gpg] http://openfde.com/repos/$ID/ \
   "$(. /etc/os-release && echo "$PROJECT_CODENAME")" main" | \
   sudo tee /etc/apt/sources.list.d/openfde.list > /dev/null
-	sudo apt update
 fi
+sudo apt update
 sudo rm -rf .images 1>/dev/null 2>&1
 set -e 
 mkdir .images
-dpkg-deb -x openfde_{$fde_version}_arm64.deb .images
+dpkg-deb -x openfde_${fde_version}_arm64.deb .images
 pushd .images/usr/openfde
 popd 
-
-dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " " |grep ^openfde |sort -rh`
-if [ -z "$dst_dir" ];then
-	echo "Error: no openfde-x.x.x directory founded locate in debian"
+n=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " " |grep ^openfde |wc -l`
+if [ $n -ge 1 ];then
+	echo "Error: more than one openfde-x.x.x directory found located in debian"
 	exit 1
 fi
-cp -a .images/usr/openfde/waydroid_images.tar debian/$dst_dir
+dst_dir=`ls debian/ -l |grep ^d |awk -F " " '{print $NF}' |tr -d " " |grep ^openfde |sort -rh`
+if [ -z "$dst_dir" ];then
+	echo "Error: no openfde-x.x.x directory found located in debian"
+	exit 1
+fi
+cp -a .images/usr/openfde/waydroid_image.tar debian/$dst_dir
 sudo rm -rf .images
-sudo rm -rf openfde_{$fde_version}_arm64.deb
+sudo rm -rf openfde_${fde_version}_arm64.deb
 
