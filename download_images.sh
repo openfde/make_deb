@@ -11,9 +11,13 @@ else
 	if [ -z "$PROJECT_CODENAME" ];then
 		PROJECT_CODENAME=$VERSION_CODENAME
 	fi
+	. /etc/os-release
+	if [ -z $PROJECT_CODENAME ];then
+		PROJECT_CODENAME=$VERSION_CODENAME
+	fi
 	sudo echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/packages.openfde.gpg] http://openfde.com/repos/$ID/ \
-  "$(. /etc/os-release && echo "$PROJECT_CODENAME")" main" | \
+  "$(echo "$PROJECT_CODENAME")" main" | \
   sudo tee /etc/apt/sources.list.d/openfde.list > /dev/null
 fi
 sudo apt update
