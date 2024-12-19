@@ -79,6 +79,9 @@ echo "tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_im
 tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
 pushd $dst
 #step 4 fill changes
+if [ ! -e /usr/bin/dch ];then
+	sudo apt install devscripts
+fi
 dch -i 
 popd 
 
