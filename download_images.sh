@@ -11,10 +11,6 @@ else
 	if [ -z "$PROJECT_CODENAME" ];then
 		PROJECT_CODENAME=$VERSION_CODENAME
 	fi
-	. /etc/os-release
-	if [ -z $PROJECT_CODENAME ];then
-		PROJECT_CODENAME=$VERSION_CODENAME
-	fi
 	sudo echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/packages.openfde.gpg] http://openfde.com/repos/$ID/ \
   "$(echo "$PROJECT_CODENAME")" main" | \
