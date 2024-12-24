@@ -4,6 +4,7 @@
 /usr/bin/fde_brightness
 /usr/bin/fde-set-ime-engine
 /usr/bin/fde_utils
+/usr/bin/fde_launch
 /usr/bin/fde_display_geo.py
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
