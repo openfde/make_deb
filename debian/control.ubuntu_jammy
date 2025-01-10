@@ -18,11 +18,12 @@ Depends: ${misc:Depends},
          lxc,
          ibus, 
          libxrender1, 
+         pkgconf,
+         libglib2.0-dev,
          wl-clipboard,
          xclip,
          ddcutil,
-         libx11-dev, 
-         i3-wm
+         libx11-dev 
 Recommends: ${misc:Depends}, 
 	 ubuntu-desktop,
          tigervnc-common 
