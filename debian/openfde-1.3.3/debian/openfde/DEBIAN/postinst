@@ -14,8 +14,6 @@ sudo rm -rf /usr/openfde/fde.tar
 sudo sysctl -p
 echo 15 >> /tmp/fde_installing_process
 
-sudo rm -rf /usr/share/xsessions/i3-with-shmlog.desktop 1>/dev/null 2>&1
-sudo rm -rf /usr/share/xsessions/i3.desktop 1>/dev/null 2>&1
 sudo rm -rf /usr/share/xsessions/mutter.desktop 1>/dev/null 2>&1
 
 echo "Step 3: load the image"
