@@ -31,7 +31,7 @@ else
 	source /etc/lsb-release
 fi
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
-if [ "$DISTRIB_ID" != "Deepin" ]  &&  [ "$DISTRIB_ID" != "uos" ] ;then
+if [ "$DISTRIB_ID" != "Deepin" ] ;then
 	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 fi
 if [ "$DISTRIB_ID" = "Kylin" ];then
