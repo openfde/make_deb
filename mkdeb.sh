@@ -47,6 +47,9 @@ elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 elif [ "$DISTRIB_ID" == "uos" ] ;then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.uos20eagle ${dst}/debian/control
+elif [ "$DISTRIB_ID" == "Deepin" ] ;then
+	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
+	cp -a debian/control.deepin_$DISTRIB_CODENAME ${dst}/debian/control
 fi
 
 

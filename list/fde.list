@@ -10,7 +10,6 @@
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
 /etc/sysctl.conf
-/etc/i3/config
 /usr/bin/ibus-fdeime
 /usr/share/ibus/component/fdeime.xml
 /lib/systemd/system-sleep/openfde
