@@ -57,7 +57,9 @@ sudo mv /usr/bin/fde_wm /tmp/fde_wm 1>/dev/null 2>&1 && sudo rm -rf /tmp/fde_wm 
 if [ "$ID" = "kylin" ];then
 	sudo cp -a /usr/local/bin/mutter /usr/bin/fde_wm
 else
-	sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+	if [ "$ID" != "deepin" ];then
+		sudo cp -a /usr/bin/mutter /usr/bin/fde_wm
+	fi
 fi
 echo 85 >> /tmp/fde_installing_process
 sudo ldconfig
