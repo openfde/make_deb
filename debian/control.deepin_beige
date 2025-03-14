@@ -11,18 +11,21 @@ Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
          libibus-1.0-5, 
-         python3-pip,
+	 libx11-dev, 
+	 wmctrl,
+	 fdenavi,
          zenity,
          lxc,
          libglib2.0-dev,
          pkgconf,
          ibus, 
          fuse3, 
-         libglib2.0-dev, 
          libxrender1, 
          wl-clipboard,
          xclip,
          gcc,
-         ddcutil
+         ddcutil,
+         python3-pip,
+         python3-requests
 Recommends: ${misc:Depends}, 
 Description: Fusion Desktop Environment

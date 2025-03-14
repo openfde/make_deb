@@ -10,7 +10,6 @@ Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
-	tigervnc-standalone-server,
 	libibus-1.0-5, 
 	ibus, 
 	libx11-dev, 
@@ -21,6 +20,7 @@ Depends: ${misc:Depends},
 	libglib2.0-dev,
 	zenity,
 	fdenavi,
+	wl-clipboard,
 	xclip,
 	ddcutil,
 	mutter,
