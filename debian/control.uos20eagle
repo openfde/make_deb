@@ -27,6 +27,4 @@ Depends: ${misc:Depends},
 	python3-requests,
 	python3-pip
 Recommends: ${misc:Depends}, 
-	tigervnc-common, 
-	tigervnc-viewer 
 Description: Fusion Desktop Environment
