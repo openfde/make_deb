@@ -46,6 +46,10 @@ elif [ "$DISTRIB_ID" = "Debian" ];then
 	cp -a debian/control.debian_$VERSION_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 	cp -a debian/control.ubuntu_$DISTRIB_CODENAME ${dst}/debian/control
+	machine=`uname -m`
+	if [ "$machine" = "x86_64" ];then
+		sed -i "s/arm64/amd64/"  ${dst}/debian/control
+	fi
 elif [ "$DISTRIB_ID" == "uos" ] ;then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.uos20eagle ${dst}/debian/control

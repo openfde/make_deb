@@ -40,7 +40,7 @@ sudo umount orig
 sudo umount system
 
 echo "make vendorimg"
-dd if=/dev/zero of=vendorimg bs=1M count=500
+dd if=/dev/zero of=vendorimg bs=1M count=600
 sudo mkfs.ext4 vendorimg
 sudo mount vendor.img orig
 sudo mount vendorimg vendor
