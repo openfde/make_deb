@@ -124,7 +124,7 @@ sudo cp ~/gbinder-python/dist/gbinder-python-1.0.0.tar.gz $dst/
 
 if [ $arm64_only -eq 1 ];then
 	echo "tar -cJvpf debian/openfde-arm64_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz "
-	#tar -cJvpf debian/openfde-arm64_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
+	tar -cJvpf debian/openfde-arm64_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
 else
 	echo "tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz "
 	tar -cJvpf debian/openfde_${ver}.orig.tar.xz  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
