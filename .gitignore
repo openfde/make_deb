@@ -1,7 +1,3 @@
-debian/openfde*/debian/openfde/usr/
-debian/openfde*/debian/files
-debian/openfde*/debian/openfde/DEBIAN/md5sums
-debian/openfde*/debian/openfde.debhelper.log
 *fde.tar
 waydroidlist
 system.img
@@ -11,6 +7,9 @@ vendorimg
 *tigervnc.tar.gz
 *waydroid_image.tar
 *waydroid.tar
+*gbinder-python-1.0.0.tar.gz
+*.debhelper
+debian/openfde-*/debian
 debian/openfde_*.debian.tar.xz
 debian/openfde_*.dsc
 debian/openfde_*.buildinfo

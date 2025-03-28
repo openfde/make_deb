@@ -1,0 +1,12 @@
+Package: openfde
+Version: 1.3.4-20250320ubuntu1
+Architecture: amd64
+Maintainer: openfde <openfde@openfde>
+Installed-Size: 925853
+Depends: libibus-1.0-5, python3-pip, mutter, zenity, lxc, ibus, libxrender1, pkgconf, libglib2.0-dev, libpython3-dev, wl-clipboard, xclip, ddcutil, libx11-dev
+Recommends: ubuntu-desktop
+Section: devel
+Priority: optional
+Multi-Arch: foreign
+Homepage: openfde.com
+Description: Fusion Desktop Environment
