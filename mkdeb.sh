@@ -28,12 +28,12 @@ if [ ! -e ~/gbinder-python/dist/gbinder-python-1.0.0.tar.gz  ];then
 	exit 1
 fi
 
-num=`ls debian -l |grep ^d |grep openfde* |wc -l`
+num=`ls debian -ln |grep ^d |grep openfde* |wc -l`
 if [ $num -ne 1 ];then
 	echo "Error: more than one directory like openfde-x.x.x exist. please remove the useless one"
 	exit 1 
 fi
-dst_dir=`ls debian/ -l |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
+dst_dir=`ls debian/ -ln |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
 
 dst=debian/$dst_dir
 if [ $arm64_only -eq 1 ];then
