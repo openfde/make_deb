@@ -1,0 +1,294 @@
+openfde (1.3.4-20250226kylin2) UNRELEASED; urgency=medium
+  * 优化拷贝文件到桌面后同步刷新桌面
+  * 新增FDEPreinstaller 程序，退出安装向导后，可以继续安装预装应用
+  * 优化FDE-X11，改为service服务,降低gpu使用率
+  * 优化关闭应用功能，修复某些应用关闭后无法再打开问题
+  * 兼容配置增加不允许后台运行选项，目前只有保卫萝卜被设置
+
+ -- warlice <warlice@warlice-kylin>  Wed, 26 Feb 2025 15:53:52 +0800
+
+openfde (1.3.3-20250126kylin1ubuntu1) UNRELEASED; urgency=medium
+  * 修复微信朋友圈不能评论
+  * 微信界面的字体大小优化
+  * 新增应用快捷方式融合,
+  * 修复平行视界通过通知栏打开坐标不对的问题
+  * 文件管理器搜索动画优化
+  * 键盘打开桌面快捷方式需要按两下问题修复
+  * 优化桌面创建快捷方式性能
+
+ -- warlice <warlice@warlice-kylin>  Mon, 24 Feb 2025 13:55:03 +0800
+
+openfde (1.3.2-20241128kylin1) UNRELEASED; urgency=medium
+  * 新增pid max 检测
+  * mutter仅仅打包插件库
+  * 文件夹融合禁止从主机上删除文件
+  * 新增desktop文件夹融合
+  * 通过共享内存优化兼容性框架性能
+  * 平行视界优化
+  * 桌面右键功能
+  * 桌面图标和文件管理器从单击改为双击打开
+  * 图库优化桌面图标显示方式,改为等比缩放后居中裁剪
+  * 文件管理器优化界面
+  * 开机向导新增预装软件功能 
+  * 优化虚拟分辨率配置
+
+ -- warlice <warlice@warlice-kylin>  Wed, 08 Jan 2025 11:44:35 +0800
+
+openfde (1.3.1-20241023kylin1) UNRELEASED; urgency=medium
+  * 新增文件管理器中通过分享直接发送微信（单张、多张）
+  * 新增图库部分文字英文翻译
+  * 优化鼠标移动反应速度
+  * 新增平行视界功能，目前仅对部分app生效
+  * 状态栏新增输入法切换按钮。
+  * 新增应用宝静默更新应用功能。
+  * 修复部分应用启动界面的弹出窗口超出应用主窗口
+  * 修复部分通知不能关闭问题
+  * 应用模式下不使用默认wayland server套接字
+  * 优化兼容性框架读取性能 
+  * 虚拟桌面导航
+
+ -- warlice <warlice@warlice-kylin>  Fri, 08 Nov 2024 19:17:41 +0800
+
+openfde (1.3.0-20240909kylin2) UNRELEASED; urgency=medium
+  * 新增JM9100 gpu支持
+  * 新增开机向导
+  * 新增音频设备选择功能
+  * 映射了主机hosts文件到FDE
+  * 优化了FDE内部设备识别信息
+  * 优化了FDE版本的显示方式
+  * 修复向右放大窗口概率变成拖动窗口
+  * 支持双指缩放和ctrl按键加鼠标滑轮模拟缩放
+
+ -- warlice <warlice@warlice-kylin>  Thu, 10 Oct 2024 14:26:31 +0800
+
+openfde (1.2.3-20240716kylin1) UNRELEASED; urgency=medium
+
+  * 新增文件夹融合
+  * 新增音量控制融合
+  * 修复蓝信视频横屏问题
+  * 调整了滑轮滑动列表的速度
+  * 修复wps创建的文件，未能进入mediaprovider数据库
+  * 修复第一次安装文件浏览器点击根文件系统崩溃的问题
+  * 修复vnc应用不能连续输入问题
+  * 修复应用模式下，todesk有鼠标移动结界问题
+  * 修复部分应用获取gps数据不对问题
+
+ -- warlice <warlice@warlice-kylin>  Mon, 09 Sep 2024 12:08:49 +0800
+
+openfde (1.2.1-20240611kylin2) unstable; urgency=medium
+
+  * 修复原神崩溃
+  * 修复linux融合应用切换输入法后，滚轮无效
+  * 静音符号不准确，wifi网络被挤压看不到未链接网络问题
+  * 图库新增wexin图片发送功能
+  * 优化网络状态监听机制
+  * 修复部分应用在非全屏模式下显示不正常问题
+  * 修复两个显示器扩展模式下fde无法启动问题
+  * 修复鼠标偶尔会消失的问题
+
+ -- warlice <warlice@warlice-kylin>  Wed, 22 May 2024 17:55:04 +0800
+
+openfde (1.2.0-20240510kylin1) unstable; urgency=medium
+
+  * gps可设置地址
+  * 滑轮模拟成触摸滑动
+  * 修复腾讯会议无法播放录制视频问题
+  * 删除开机动画
+  * 增加返回功能按键F8
+
+ -- warlice <warlice@warlice-kylin>  Mon, 06 May 2024 18:55:41 +0800
+
+openfde (1.1.1-20240416kylin1) unstable; urgency=medium
+
+  * 默认设置设备名为OpenFDE device 
+  * 为android应用自动将鼠标事件模拟为touch事件
+  * 默认添加兼容性框架配置文件
+  * linux 卷挂载点使用人可阅读的挂载点
+  * 增加显示器亮度调整功能
+  * 修复图库裁剪后图片缺少元数据问题
+
+ -- openfde <openfde@openfde>  Mon, 15 Apr 2024 14:32:23 +0800
+
+openfde (1.1.0-20240326kylin2) unstable; urgency=medium
+
+  * 替换x100 图形纹理提交方案为dmabuf，提高其运行性能。
+  * 修复京东不响应F11的问题 
+  * UI整体更新
+  * 任务栏上的应用反复点击能准确隐藏和显示
+  * 修复app兼容性问题 
+  * 设备名改为OpenFDE arm64 device
+  * 开机界面提示信息改为OpenFDE正在启动中 
+
+ -- warlice <warlice@warlice-kylin>  Wed, 20 Mar 2024 18:03:18 +0800
+
+openfde (1.0.8-20240226kylin3) unstable; urgency=medium
+
+  * 修复toDesk等app崩溃问题
+  * 设置网络的子网掩码由长度改为具体掩码
+  * 快捷切换输入法支持
+  * 增加Alt+F4快捷关闭组合按键，修复安装程序不响应F11事件问题
+  * 升级linux egl 到20.1.0,以支持egl_image_dma_buf_import_modifiers扩展
+  * 修复京东等app频繁切换最大化问题
+  * 修复微博按下F11闪退问题
+  * USB转往口设备的适配优化
+
+ -- warlice <warlice@warlice-kylin>  Wed, 21 Feb 2024 16:05:08 +0800
+
+openfde (1.0.7-20240201kylin1) unstable; urgency=medium
+
+  * 优化linux融合应用启动画面等待时间，优化启动后的鼠标显示
+  * 在麒麟系统下使用fde-binder设备
+  * linux融合应用增加键盘输入模式，支持密码框输入
+  * 禁止全屏状态下通过鼠标唤出状态栏和导航栏，增加F11为全屏快捷键
+  * 修复微博和淘宝在某些页面有双标题栏的问题
+  * 修复部分网络异常问题，优化网络设置UI，不再阻塞操作
+  * 修复图库部分问题，优化图库操作体验
+
+
+ -- warlice <warlice@warlicekylin>  Fri, 26 Jan 2024 13:31:43 +0800
+
+openfde (1.0.6-20240113) unstable; urgency=medium
+
+  * new gallery apk
+  * fix crash when starting fusion linux app 
+  * fix network breaking for some conditions
+ 
+
+ -- warlice <warlice@warlice-pc>  Fri, 12 Jan 2024 11:56:30 +0800
+
+openfde (1.0.5-20231228) unstable; urgency=medium
+
+  * 完善网络设置UI和功能 
+  * 优化x100下图形显示卡顿问题
+  * 优化x100有应用在前台时进入睡眠，唤醒后桌面背景变黑的问题（唤醒后进入登录界面）
+  * 修复部分应用报环境被root的问题
+  * 修复wifi情况dns不生效问题
+
+
+ -- openfde <openfde@openfde>  Wed, 20 Dec 2023 14:11:02 +0800
+
+openfde (1.0.4-20231216) unstable; urgency=medium
+  * 增加锁屏功能
+  * 增加网络设置功能
+  * 增加电源icon跳转到系统->电源设置界面功能
+  * 新增查找应用功能
+  * 修复图库分辨率低问题
+  * 移除wificond服务，避免循环启动wificond;
+  * 修复融合应用输入法掉字，多字问题
+  * 修复融合应用剪切板不同步功能，修复打开services and support报错，修复连接报错，修复双击卡死
+   
+
+ -- openfde <openfde@openfde>  Wed, 13 Dec 2023 18:53:01 +0800
+
+openfde (1.0.3-20231206) unstable; urgency=medium
+
+  * 修复vnc输入法shift按键不弹起的问题
+  * 修复x100录屏卡顿问题
+  * 修复vnc连接报too many security failures的问题 
+  * 支持拖动窗口越过屏幕左边界限
+  * 去除录屏时长和文件大小两个限制
+  * 文件系统融合支持逻辑卷挂载，支持HOME/openfde写权限
+  * 去除重启自动登录FDE
+
+ -- warlice <warlice@warlice>  Wed, 06 Dec 2023 19:05:22 +0800
+
+openfde (1.0.2-20231128) unstable; urgency=medium
+
+  * 为tigervnc的bin文件添加可执行权限,修复解压无权限问题
+
+ -- fde <fde@fde-pc>  Tue, 28 Nov 2023 09:24:43 +0800
+
+openfde (1.0.2-20231127) unstable; urgency=medium
+
+  * 修改安装脚本，不单独对x100显卡环境进行特殊处理；
+  * 删除fdeion.ko文件
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 17:42:40 +0800
+
+openfde (1.0.2-20231126) unstable; urgency=medium
+
+  * 修复安装BUG
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 10:03:29 +0800
+
+openfde (1.0.2-20231125) unstable; urgency=medium
+
+  * 修改postinst脚本，将文件删除放在安装最后
+  * 修改tigervnc-standalone-server的安装方式
+
+ -- fde <fde@fde-pc>  Mon, 27 Nov 2023 09:31:46 +0800
+
+openfde (1.0.2-20231124) unstable; urgency=medium
+
+  * 1. 修复启动时卡在openfde启动界面的问题
+  * 2. 去掉openfde背景图的正在启动中字样
+
+ -- fde <fde@fde-pc>  Fri, 24 Nov 2023 12:09:37 +0800
+
+openfde (1.0.1-20231123) unstable; urgency=medium
+
+  * 1. 还原了systemui关于通知栏丢失快捷操作按钮的功能
+  * 2. 还原了mate-terminla 不能输入中文的问题
+  * 3. 文件系统融合通过文件管理器不能打开openfde下的文件夹的权限问题
+  * 4. 启用笔记本轻触即点击功能
+  * 5. 修复了第一次安装后，登录fde会退出的问题
+
+ -- fde <fde@fde-pc>  Thu, 23 Nov 2023 17:13:32 +0800
+
+openfde (1.0-20231124) unstable; urgency=medium
+
+  * 修改背景图片  
+
+ -- root <root@fde-pc>  Wed, 22 Nov 2023 18:09:46 +0800
+
+openfde (1.0-20231123) unstable; urgency=medium
+
+  * 删除了开机动画
+  * 增加了openfde背景启动画面
+  * 修复了重启时，直接进入fde后鼠标卡顿问题。
+  * 修复了休眠醒来时，背景画面不加载的问题
+  * 修复了vnc 融合应用部分图片不加载问题。修复了部分无法输入的问题
+  * 修复了mate 终端没有光标的问题
+  * 修复了部分usb wifi网络无法启用问题
+  * 修复了文件系统在用户家目录下的openfde，无法访问问题。将android data的在linux上的原始挂载路径从HOME/.local/share/waydroid/data 改为了HOME/.local/share/openfde.
+  * 新增了版本号显示。
+  * 将tigervnc修改的内容添加至包内。
+
+ -- root <root@fde-pc>  Wed, 22 Nov 2023 14:08:26 +0800
+
+openfde (1.0-20231114) unstable; urgency=medium
+
+  * 将x100与其他显卡版本融合，当前版本支持所有显卡；
+  * 安装包同时支持x100和mesa系列gpu。
+  * 更新消息通知方案，避免消息过大，导致systemui崩溃
+  * 去掉vncapp，systemui中的多余日志. 
+  * 更新安装脚本
+  * 修改文件挂载点
+
+ -- fde <fde@fde-pc>  Tue, 14 Nov 2023 13:49:38 +0800
+
+openfde (1.0-20231109) unstable; urgency=medium
+
+  * 增加支持x100笔记本
+
+ -- fde <fde@fde-pc>  Thu, 09 Nov 2023 17:59:19 +0800
+
+openfde (1.0-1106) unstable; urgency=medium
+
+  * 更新软件的依赖包版本
+
+ -- fde <fde@fde-pc>  Mon, 06 Nov 2023 11:15:23 +0800
+
+openfde (1.0-11021037) unstable; urgency=medium
+
+  * 修复应用发送的消息过大导致的崩溃
+  * 修复postinst、preinst脚本中的bug 
+
+ -- fde <fde@fde-pc>  Thu, 02 Nov 2023 10:37:45 +0800
+
+openfde (1.0-1101) unstable; urgency=low
+
+  * Initial release. 
+  * update files 
+
+ -- fde <fde@fde-pc>  Wed, 01 Nov 2023 17:50:21 +0800

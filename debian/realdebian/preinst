@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "This installation gonna install the Open Fusion Desktop Environment"
+echo "Extracting files..."
+echo "Step 1: install openfde"
+mkdir -p /usr/openfde
+rm -rf /tmp/fde_installing_process

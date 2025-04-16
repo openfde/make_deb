@@ -1,0 +1,11 @@
+openfde14 (2.0.1-20250415kylin1) UNRELEASED; urgency=medium
+  * new ui for systemui
+  * new ui for documentui
+  * new ui for setupwizard
+  * new functions for launcher
+  * fix some crash for systemui
+  * support the 1001 user to run openfde
+  * fix crash for rendering yu12 to amdgpu 
+  * opening in the split screen is forbidden
+
+ -- warlice <warlice@warlice-pc>  Tue, 15 Apr 2025 15:45:30 +0800

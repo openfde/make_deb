@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sudo waydroid session stop 1>/dev/null 2>&1 
+sudo systemctl daemon-reload 2>/dev/null
+sudo systemctl stop waydroid-container 1>/dev/null 2>&1
+sudo rm -rf /usr/share/waydroid-extra/images 1>/dev/null 2>&1
+sudo rm -rf /usr/bin/fde_utils 1>/dev/null 2>&1
+sudo rm -rf /usr/share/applications/openfde.desktop 1>/dev/null 2>&1
+sudo rm -rf /usr/share/icons/hicolor/96x96/apps/openfde.png 1>/dev/null 2>&1
+sudo rm -rf /var/lib/waydroid/ 1>/dev/null 2>&1
+sudo rm -rf /usr/lib/waydroid/ 1>/dev/null 2>&1
+sudo rm -rf /usr/bin/fde_ctrl 1>/dev/null 2>&1
+sudo rm -rf /usr/bin/fde_fs 1>/dev/null 2>&1
+sudo rm -rf /usr/bin/fde_brightness 1>/dev/null 2>&1
+sudo rm -rf /var/lib/fde 1>/dev/null 2>&1
