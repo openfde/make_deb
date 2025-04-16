@@ -162,7 +162,7 @@ elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
 fi
 echo "tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz "
-#tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
+tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
 pushd $dst
 #step 4 fill changes
 if [ ! -e /usr/bin/dch ];then
@@ -172,7 +172,7 @@ dch -i
 popd 
 
 #step 5 make debs
-dst_dir=`ls debian/ -l |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
+dst_dir=`ls debian/ -nl |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
 pushd debian/$dst_dir
 sudo DEB_BUILD_OPTIONS="parallel=4" dpkg-buildpackage -us -uc
 if [ $? != 0 ];then
