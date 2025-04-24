@@ -166,7 +166,7 @@ tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gb
 pushd $dst
 #step 4 fill changes
 if [ ! -e /usr/bin/dch ];then
-	sudo apt install devscripts
+	sudo apt install devscripts -y
 fi
 dch -i 
 popd 
