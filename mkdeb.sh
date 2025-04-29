@@ -92,7 +92,9 @@ else
 	source /etc/lsb-release
 fi
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
-cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
+if [ "$DISTRIB_ID" != "uos" -a "$DISTRIB_ID" != "Deepin" ];then
+	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
+fi
 if [ "$DISTRIB_ID" = "Kylin" ];then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/kylinmutter.list |sudo tee -a list/waydroidlist  1>/dev/null
@@ -109,6 +111,9 @@ elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 elif [ "$DISTRIB_ID" == "uos" ] ;then
 	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.uos20eagle ${dst}/debian/control
+elif [ "$DISTRIB_ID" == "Deepin" ] ;then
+	cat list/weston12.list |sudo tee -a list/waydroidlist 1>/dev/null
+	cp -a debian/control.deepin_$DISTRIB_CODENAME ${dst}/debian/control
 fi
 
 sudo cp debian/changelog.openfde ${dst}/debian/changelog
