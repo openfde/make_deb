@@ -161,8 +161,8 @@ elif [ $openfde11 -eq 1 ];then
 elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
 fi
-echo "tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz "
-tar -cJvpf debian/$tarfile  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz
+echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz |xz -T0 > debian/$tarfile"
+tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz |xz -T0 > debian/$tarfile
 pushd $dst
 #step 4 fill changes
 if [ ! -e /usr/bin/dch ];then
