@@ -54,7 +54,7 @@ fi
 echo 70 >> /tmp/fde_installing_process
 sudo rm -rf /usr/openfde/gbinder-python-1.0.0.tar.gz
 
-sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install pyclip --find-links=/usr/lib/waydroid/wheel
+sudo PIP_BREAK_SYSTEM_PACKAGES=1 pip3 install pyclip --no-index --find-links=/usr/lib/waydroid/wheel
 echo 80 >> /tmp/fde_installing_process
 source /etc/os-release
 if [ -e /usr/bin/fde_wm ];then
