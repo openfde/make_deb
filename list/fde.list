@@ -11,8 +11,6 @@
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
 /etc/sysctl.conf
-/usr/bin/ibus-fdeime
-/usr/share/ibus/component/fdeime.xml
 /lib/systemd/system-sleep/openfde
 /lib/pm-utils/power.d/99openfde
 /usr/share/icons/hicolor/96x96/apps/openfde.png
