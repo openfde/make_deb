@@ -1,4 +1,30 @@
-openfde14 (2.0.1-20250415kylin1) UNRELEASED; urgency=medium
+openfde14 (2.0.2-20250520kylin1) UNRELEASED; urgency=medium
+  * fix the issue where app content is obscured by the title bar.
+  * fix display abnormalities when SurfaceView is present (enable shadows).
+  * replace the background image.
+  * Optimize startup speed.
+  * fix the display issue in Settings when dragging ends.
+  * Add X11 support.
+  * Add an alternative Gaussian blur solution; disable dynamic Gaussian blur on x100 and Virtue devices.
+  * Add shadows to borders and make window corners rounded.
+  * Update the overall style of the window manager.
+  * Move the system privacy indicator dot to the top-left corner and adjust the margin size of the top status bar.
+  * Fix the font layout issue in WeChat and the problem of being unable to comment on Moments.
+  * Fix the issue where a dragged window cannot recover after exceeding the top status bar.
+  * Fix the issue where the taskbar background turns black when a window is maximized but not fullscreen.
+  * Add clipboard interoperability with host linux. 
+  * Port the auto-disable simulated touch compatibility option 
+  * Port the allow screenshot/screen recording compatibility option 
+  * Port the fix oversized dialog and component display compatibility option 
+  * Add a virtual resolution compatibility option 
+  * Add a fix for title bar obstruction compatibility option 
+  * Fix unreached network issue
+  * optimized desktop of applications syncing
+  * add span to split dock and status bar with app window
+
+ -- warlice <warlice@warlice-pc>  Tue, 20 May 2025 15:37:00 +0800
+
+openfde14 (2.0.1-20250415kylin1ubuntu1) UNRELEASED; urgency=medium
   * new ui for systemui
   * new ui for documentui
   * new ui for setupwizard
@@ -8,4 +34,4 @@ openfde14 (2.0.1-20250415kylin1) UNRELEASED; urgency=medium
   * fix crash for rendering yu12 to amdgpu 
   * opening in the split screen is forbidden
 
- -- warlice <warlice@warlice-pc>  Tue, 15 Apr 2025 15:45:30 +0800
+ -- warlice <warlice@warlice-pc>  Fri, 09 May 2025 18:27:55 +0800
