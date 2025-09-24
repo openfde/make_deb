@@ -13,6 +13,9 @@
 /usr/lib/waydroid
 /usr/bin/waydroid
 /usr/share/dbus-1/system.d/id.waydro.Container.conf
+/usr/share/dbus-1/system.d/com.openfde.Infra.conf
 /usr/share/polkit-1/actions/id.waydro.Container.policy
 /usr/share/dbus-1/system-services/id.waydro.Container.service
+/usr/share/dbus-1/system-services/com.openfde.Infra.service
 /usr/lib/systemd/system/waydroid-container.service
+/usr/lib/systemd/system/openfde-infra.service
