@@ -96,7 +96,6 @@ if [ "$DISTRIB_ID" != "uos" -a "$DISTRIB_ID" != "Deepin" ];then
 	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 fi
 if [ "$DISTRIB_ID" = "Kylin" ];then
-	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cat list/kylinmutter.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylinfde.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
@@ -109,10 +108,8 @@ elif [ "$DISTRIB_ID" = "Ubuntu" ];then
 	sudo apt install -y debhelper
 	cp -a debian/control.ubuntu_$DISTRIB_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" == "uos" ] ;then
-	cat list/weston.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.uos20eagle ${dst}/debian/control
 elif [ "$DISTRIB_ID" == "Deepin" ] ;then
-	cat list/weston12.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.deepin_$DISTRIB_CODENAME ${dst}/debian/control
 fi
 

@@ -10,24 +10,16 @@ Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
-	libibus-1.0-5, 
-	libmutter-6-0,
-	ibus, 
-	libx11-dev, 
 	lxc,
 	wmctrl,
 	zenity,
 	fde-binder-dkms,
-	libxrender1,
 	pkgconf,
-	libglib2.0-dev,
-	gnome-settings-daemon-common,
 	gsettings-desktop-schemas (>=3.33.0),
 	wl-clipboard,
 	xclip,
 	fdenavi,
 	ddcutil,	
-	python3-pip,
-	mutter
+	python3-pip
 Recommends: ${misc:Depends},
 Description: Fusion Desktop Environment
