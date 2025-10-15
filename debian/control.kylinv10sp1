@@ -11,6 +11,8 @@ Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
 	lxc,
+	libmutter-6-0,
+	mutter,
 	wmctrl,
 	zenity,
 	fde-binder-dkms,

@@ -12,6 +12,7 @@ Multi-Arch: foreign
 Depends: ${misc:Depends},
 	lxc,
 	wmctrl,
+	mutter,
 	pkgconf,
 	zenity,
 	fdenavi,
