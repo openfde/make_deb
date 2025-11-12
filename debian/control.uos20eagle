@@ -12,6 +12,7 @@ Multi-Arch: foreign
 Depends: ${misc:Depends},
 	lxc,
 	wmctrl,
+	python3-psutil,
 	mutter,
 	pkgconf,
 	zenity,
