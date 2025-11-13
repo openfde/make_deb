@@ -1,4 +1,43 @@
-openfde14 (2.0.2-20250520kylin1) UNRELEASED; urgency=medium
+openfde14 (2.0.3-20251110kylin1) UNRELEASED; urgency=medium
+  * 解决settings应用在缩放过程中的花屏问题
+  * systemui上加入了电源信息
+  * 状态栏录频按钮对接了系统录屏功能。
+  * 修复录屏结束后，弹了多次toast，更新应用后dock栏图标丢失
+  * 桌面弹窗样式（菜单、删除等） 、去掉重命名底部黑框、右键显示设置无标题栏问题
+  * 任务管理器横向拖动Bug修复、资源折线图顶格等问题修复
+  * 文件管理器改成双击选择
+  * 设置应用一些字体样式调整
+  * 新增了资源管理器应用。
+  * 使用FDE图库替代系统原图库。
+  * 修复了一些应用如宝宝巴士报无网络问题。
+  * 新增了x11 协议的hwcomposer，不再需要weston转接x11 server。
+  * 修复了窗口大小记忆功能无效问题。
+  * 任务栏的控件以及应用列表都可以通过按Esc快捷关闭。
+  * 支持amdgpu 上开启摄像头，修复录象结果前几帧错误问题。
+  * 修复录屏结果会花屏的问题（h265改为h264）。
+  * 修复第一次安装openfde14，taskmanager会闪退问题，同时openfde无法关闭问题。
+  * 桌面图标持久化解决无响应问题、
+  * 修复Linux桌面android图标过小的问题 
+  * 修复设置兼容性配置重启后数据丢失问题  
+  * 任务管理器样式调整
+  * 修复鼠标形状概率性无法切换问题。
+  * 修复两个应用窗口距离较近时，无法切换焦点到非焦点窗口,以及鼠标形状切换滞后问题。
+  * 修复方向键向下键无响应问题
+  * 增加tab用于在应用列表下，切换搜索框和应用选中的焦点功能
+  * 支持api转发的运行模式
+  * 支持linux的中文输入法
+  * 修复D3000m休眠醒来后状态栏崩溃的问题
+  * 应用列表支持回车键启动app
+  * 修复了settings应用缩放时闪烁的问题
+  * 修复鼠标图标太大问题
+  * 修复无网卡setttings崩溃问题
+  * 修复setttings应用在某些分辨率下图标无颜色问题
+  * 修复dock
+  * disable linux inputmethod for single window mode
+
+ -- warlice <warlice@warlice-pc>  Mon, 10 Nov 2025 16:14:28 +0800
+
+openfde14 (2.0.2-20250520kylin1ubuntu1) UNRELEASED; urgency=medium
   * fix the issue where app content is obscured by the title bar.
   * fix display abnormalities when SurfaceView is present (enable shadows).
   * replace the background image.
@@ -22,7 +61,7 @@ openfde14 (2.0.2-20250520kylin1) UNRELEASED; urgency=medium
   * optimized desktop of applications syncing
   * add span to split dock and status bar with app window
 
- -- warlice <warlice@warlice-pc>  Tue, 20 May 2025 15:37:00 +0800
+ -- warlice <warlice@warlice-pc>  Mon, 13 Oct 2025 16:20:48 +0800
 
 openfde14 (2.0.1-20250415kylin1ubuntu1) UNRELEASED; urgency=medium
   * new ui for systemui

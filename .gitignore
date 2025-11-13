@@ -11,14 +11,14 @@ vendorimg
 *tigervnc.tar.gz
 *waydroid_image.tar
 *waydroid.tar
-debian/openfde_*.debian.tar.xz
-debian/openfde_*.dsc
-debian/openfde_*.buildinfo
-debian/openfde_*.changes
-debian/openfde_*.deb
-debian/openfde_*tar.xz
-debian/openfde-*/debian/control
-debian/openfde-*/gbinder-python*
+debian/openfde*.debian.tar.xz
+debian/openfde*.dsc
+debian/openfde*.buildinfo
+debian/openfde*.changes
+debian/openfde*.deb
+debian/openfde*tar.xz
+debian/openfde*/debian/control
+debian/openfde*/gbinder-python*
 debian/realdebian/gbinder-python*
 debian/realdebian/.debhelper/generated
 
