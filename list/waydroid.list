@@ -19,3 +19,4 @@
 /usr/share/dbus-1/system-services/com.openfde.Infra.service
 /usr/lib/systemd/system/waydroid-container.service
 /usr/lib/systemd/system/openfde-infra.service
+/etc/udev/rules.d/99-hide-android-apex-loops.rules
