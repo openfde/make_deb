@@ -10,17 +10,11 @@ Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
-         libibus-1.0-5, 
          python3-pip,
-         mutter,
+         python3-psutil,
          zenity,
          lxc,
-         libglib2.0-dev,
-         pkgconf,
-         ibus, 
          fuse3, 
-         libglib2.0-dev, 
-         libxrender1, 
          wl-clipboard,
          xclip,
          gcc,
