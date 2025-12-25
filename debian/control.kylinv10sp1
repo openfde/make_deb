@@ -11,13 +11,9 @@ Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
 	lxc,
-	libmutter-6-0,
-	mutter,
 	wmctrl,
 	zenity,
 	fde-binder-dkms,
-	pkgconf,
-	libglib2.0-dev,
 	gnome-settings-daemon-common,
 	gsettings-desktop-schemas (>=3.33.0),
 	wl-clipboard,
