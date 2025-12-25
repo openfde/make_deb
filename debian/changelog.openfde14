@@ -1,4 +1,45 @@
-openfde14 (2.0.3-20251110kylin1) UNRELEASED; urgency=medium
+openfde14 (2.0.4-20251225kylin2) UNRELEASED; urgency=medium
+  * remove highlight for dock and taskbar
+  * add wifi info for statusbar
+  * upgrade ftg340 driver
+  * optimize the consistence of the Title and window when scaling the window
+  * fix the no permission of qq for sending images 
+  * ignore the fallbackHome for Settings
+  * initiate the force_resizeable_activits to true as default 
+  * add exit fullscreen tips
+  * support caps lock and num lock
+  * sync state from host for num lock and caps lock
+  * add shortcut key page into the settings
+  * dock and statusbar do not show in startup
+  * fix crashing issues for taskmanager
+  * nonresizable and nonremoveable for csdn splash.activity to fix return unexpected
+  * save icons
+  * start launcher and app asynchrous
+  * optimize the scroll for the map
+  * generate icons when app installed
+  * fix no audio problem for some apps
+  * add shorcut to start and stop screencap
+  * fix the wrong size for scrcpy
+  * disable foucs switching for launcher
+  * fix the unexpected fullscreen for the screencap target app 
+  * fix the input error for happyvanish
+  * optimize app list sliding
+  * add entry for compatible config in dock
+  * optimize add entry for compatible config in dock
+  * fix the unexpect deleting of app shortcut in desktop dir
+  * fix the inconsistent of captionbar and window of fde-x11 when window scaling
+  * optimize the issue that capitonbar will cover window content
+  * add minwidth and minheight for some applications
+  * disable the ability of the application to hide systemuI
+  * optimize app list sliding again
+  * ifly and download is uncancelable in the setupwizard
+  * replace jingxuan with chuzhaung
+  * generate shortcut for yyb
+  * enlarge the height of systemuibar
+
+ -- warlice <warlice@warlice-pc>  Thu, 25 Dec 2025 15:31:41 +0800
+
+openfde14 (2.0.3-20251110kylin1ubuntu1) UNRELEASED; urgency=medium
   * 解决settings应用在缩放过程中的花屏问题
   * systemui上加入了电源信息
   * 状态栏录频按钮对接了系统录屏功能。
@@ -35,7 +76,7 @@ openfde14 (2.0.3-20251110kylin1) UNRELEASED; urgency=medium
   * 修复dock
   * disable linux inputmethod for single window mode
 
- -- warlice <warlice@warlice-pc>  Mon, 10 Nov 2025 16:14:28 +0800
+ -- warlice <warlice@warlice-pc>  Thu, 13 Nov 2025 14:10:56 +0800
 
 openfde14 (2.0.2-20250520kylin1ubuntu1) UNRELEASED; urgency=medium
   * fix the issue where app content is obscured by the title bar.
