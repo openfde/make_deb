@@ -10,20 +10,13 @@ Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
 Depends: ${misc:Depends},
-         libibus-1.0-5, 
-         python3-pip,
-         mutter,
-         zenity,
          lxc,
-         ibus, 
-         libxrender1, 
-         pkgconf,
-         libglib2.0-dev,
-         libpython3-dev,
+         python3-psutil,
+         zenity,
          wl-clipboard,
          xclip,
          ddcutil,
-         libx11-dev 
+         python3-pip
 Recommends: ${misc:Depends}, 
 	 ubuntu-desktop
 Description: Fusion Desktop Environment

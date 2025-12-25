@@ -23,8 +23,11 @@ else
 	arm64_only=1
 fi
 
-if [ ! -e ~/gbinder-python/dist/gbinder-python-1.0.0.tar.gz  ];then
-	echo "Error: ~/gbinder-python/dist/gbinder-python-1.0.0.tar.gz not exist. please build the project gbinder-python with python3 setup.py sdist --cython "
+echo "find gbiner.so"
+sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" > /tmp/gbinder.list
+n=`cat /tmp/gbinder.list |wc -l`
+if  [  $n = 0  ] ;then
+	echo "Error: cant't find gbinder.cpython*aarch64-linux-gnu.so "
 	exit 1
 fi
 
@@ -82,6 +85,7 @@ fi
 
 
 sudo rm -rf list/waydroidlist
+sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroidlist
 if [ ! -e "/etc/lsb-release" ];then
 	uname -a |grep Debian 1>/dev/null 2>&1
 	if [ $? = 0 ];then
@@ -154,7 +158,6 @@ if [ "$choice" = "y" ];then
 fi
 
 #step 3 make src.xz
-sudo cp ~/gbinder-python/dist/gbinder-python-1.0.0.tar.gz $dst/
 
 if [ $arm64_only -eq 1 ];then
 	tarfile=openfde-arm64_${ver}.orig.tar.xz
@@ -163,8 +166,8 @@ elif [ $openfde11 -eq 1 ];then
 elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
 fi
-echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz |xz -T0 > debian/$tarfile"
-tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar gbinder-python-1.0.0.tar.gz |xz -T0 > debian/$tarfile
+echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar  |xz -T0 > debian/$tarfile"
+tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar |xz -T0 > debian/$tarfile
 pushd $dst
 #step 4 fill changes
 if [ ! -e /usr/bin/dch ];then
