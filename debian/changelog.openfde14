@@ -1,4 +1,34 @@
-openfde14 (2.0.4-20251225kylin2) UNRELEASED; urgency=medium
+openfde14 (2.0.5-20260116kylin2) UNRELEASED; urgency=medium
+  * 支持有扩展屏的状态下，在主屏启动fde，按ctrl +F11 能唤出标题栏，鼠标按住标题栏可拖动fde到扩展屏，依然以主屏尺寸显示。
+  * 优化图库图片列表渲染显示效果，缩放窗口时，图片不再闪烁， 增加上下滚动条
+  * 任务资源管理器也增加上下滚动条。
+  * 修复D3000M 摄像头人脸是绿色的问题。
+  * 知乎、大众点评、豆瓣配置为强制竖屏模式，避免全屏显示问题
+  * 修复单应用录屏，录屏区域过小问题。
+  * 任务栏控制中心和设置应用中支持屏幕亮度调整
+  * 移除任务栏隐私点
+  * 修复携程消息中心的图标在小窗尺寸下显示不全的问题。
+  * 修复平行视界对全屏状态的主屏时，副屏显示不全的问题
+  * 修复任务栏上网络状态显示不正确的问题
+  * 修复单应用录屏的一些错误，如无法停止问题
+  * 修复标题栏在更换桌面背景过短问题。
+  * 修复视频缩略图显示不对问题
+  * 修复副窗口为全屏时，其主屏切出，拖拽导致显示异常的问题 （issue348）
+  * 修复不关闭fde，直接注销linux用户，fde未完全退出的问题
+  * 修复没有1000用户的情况下，用1001用户无法启动fde的问题。
+  * 修复更新fde版本的时候，未关闭openfde-infra服务，导致由2.0.3 更新到2.0.4再直接启动fde后，fde无法关闭的问题
+  * 修复腾讯会议屏幕分享为空的问题
+  * 修复平行视界单应用录屏崩溃问题
+  * 修复单应用录屏概率只录到一部分问题
+  * 修复打开壁纸崩溃问题
+  * 优化滚动条
+  * 修复文字过长显示
+  * 修复应用状态没有通知的问题
+  * 修复fde异常退出时，未删除单例unix socket导致其他用户无法启动问题
+
+ -- warlice <warlice@warlice-pc>  Fri, 16 Jan 2026 15:15:12 +0800
+
+openfde14 (2.0.4-20251225kylin2ubuntu1) UNRELEASED; urgency=medium
   * remove highlight for dock and taskbar
   * add wifi info for statusbar
   * upgrade ftg340 driver
@@ -37,7 +67,7 @@ openfde14 (2.0.4-20251225kylin2) UNRELEASED; urgency=medium
   * generate shortcut for yyb
   * enlarge the height of systemuibar
 
- -- warlice <warlice@warlice-pc>  Thu, 25 Dec 2025 15:31:41 +0800
+ -- warlice <warlice@warlice-pc>  Fri, 16 Jan 2026 17:35:42 +0800
 
 openfde14 (2.0.3-20251110kylin1ubuntu1) UNRELEASED; urgency=medium
   * 解决settings应用在缩放过程中的花屏问题
