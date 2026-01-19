@@ -1,7 +1,5 @@
-debian/openfde*/debian/openfde/usr/
-debian/openfde*/debian/files
-debian/openfde*/debian/openfde/DEBIAN/md5sums
-debian/openfde*/debian/openfde.debhelper.log
+debian/openfde14*
+debian/openfde*
 *fde.tar
 waydroidlist
 system.img

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo "This installation gonna install the Fusion Desktop Environment"
-echo "Extracting files..."
-
-echo "Step 1: install fde"echo "This installation gonna install the Fusion Desktop Environment"
-echo "Extracting files..."
-echo "Step 1: install fde"
