@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -ne  2 ];then
-	echo "mkdeb.sh 1.0.1 arm64only|14|11"
+	echo "mkdeb.sh 1.0.1 14|11 arm64only|x86 "
 	exit 1
 fi
 
@@ -14,78 +14,84 @@ fi
 openfde11=0
 openfde14=0
 arm64_only=0
+x86=0
 if [ "$2" = "14" ];then
 	openfde14=1
 elif [ "$2" = "11" ];then
 	openfde11=1
-else
-	echo "arm64only mode"
-	arm64_only=1
+fi
+
+if [ $# = 3 ];then
+	if [ "$3" = "x86" ];then
+		echo "x86 arch"
+		x86=1
+	else
+		echo "arm64only arch"
+		arm64_only=1
+	fi
 fi
 
 echo "find gbiner.so"
-sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" > /tmp/gbinder.list
+sudo find /usr -name "gbinder.cpython*-linux-gnu.so" > /tmp/gbinder.list
 n=`cat /tmp/gbinder.list |wc -l`
 if  [  $n = 0  ] ;then
-	echo "Error: cant't find gbinder.cpython*aarch64-linux-gnu.so "
+	echo "Error: cant't find gbinder.cpython*-linux-gnu.so "
 	exit 1
 fi
 
-num=`ls debian -ln |grep ^d |grep openfde* |wc -l`
-if [ $num -ne 1 ];then
-	echo "Error: more than one directory like openfde-x.x.x exist. please remove the useless one"
-	exit 1 
+find debian -maxdepth 1 -name "openfde*" -type d -delete
+if [ $openfde14 -eq 1 ];then
+	if [ $arm64_only -eq 1 ];then
+		mkdir debian/openfde14-arm64-$ver
+	else
+		mkdir debian/openfde14-$ver
+	fi
+elif [ $openfde -eq 1 ];then
+	if [ $arm64_only -eq 1 ];then
+		mkdir debian/openfde-arm64-$ver
+	else
+		mkdir debian/openfde-$ver
+	fi
 fi
-dst_dir=`ls debian/ -ln |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
 
-dst=debian/$dst_dir
-if [ $arm64_only -eq 1 ];then
-	if [ "$dst" != "debian/openfde-arm64-$ver" ];then
-		echo "mv $dst to debian/openfde-arm64-$ver"
-		sudo mv $dst debian/openfde-arm64-$ver
-		dst="debian/openfde-arm64-$ver"
+openfde_dir=`ls debian/ -ln |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
+dst=debian/$openfde_dir
+
+sudo cp -a debian/realdebian $dst/debian
+dirname=`find $dst/debian/ -maxdepth 1 -type d -name "openfde*" |awk -F "/" '{print $NF}'`
+
+if [ $openfde11 -eq 1 ];then
+	if  [ $arm64_only -eq 1 ];then
+		#11 doesn't support arm64only
+		echo "Error: aosp11 doesn't support arm64 only."
+		exit 1
 	fi
-	sudo rm -rf $dst/debian
-	sudo cp -a debian/realdebian $dst/debian
-	dirname=`find $dst/debian/ -maxdepth 1 -type d -name "openfde*" |awk -F "/" '{print $NF}'`
-	if [ "$dirname" != "openfde-arm64" ];then
-		echo "mv $dst/debian/$dirname to $dst/debian/openfde-arm64"
-		sudo mv $dst/debian/$dirname $dst/deian/openfde-arm64
-	fi
-elif [ $openfde11 -eq 1 ];then
-	if [ "$dst" != "debian/openfde-$ver" ];then
-		echo "mv $dst to debian/openfde-$ver"
-		sudo mv $dst debian/openfde-$ver
-		dst="debian/openfde-$ver"
-	fi
-	sudo rm -rf $dst/debian
-	sudo cp -a debian/realdebian $dst/debian
-	dirname=`find $dst/debian/ -maxdepth 1 -type d -name "openfde*" |awk -F "/" '{print $NF}'`
 	if [ "$dirname" != "openfde" ];then
 		echo "mv $dst/debian/$dirname to $dst/debian/openfde"
 		sudo mv $dst/debian/$dirname $dst/debian/openfde
 	fi
 elif  [ $openfde14 -eq 1 ];then
-	if [ "$dst" != "debian/openfde14-$ver" ];then
-		echo "mv $dst to debian/openfde14-$ver"
-		sudo mv $dst debian/openfde14-$ver
-		dst="debian/openfde14-$ver"
-	fi
-	sudo rm -rf $dst/debian
-	sudo cp -a debian/realdebian $dst/debian
-	dirname=`find $dst/debian/ -maxdepth 1 -type d -name "openfde*" |awk -F "/" '{print $NF}'`
-	if [ "$dirname" != "openfde14" ];then
-		echo "mv $dst/debian/$dirname to $dst/debian/openfde14"
-		sudo mv $dst/debian/$dirname $dst/debian/openfde14
+	if  [ $arm64_only -eq 1 ];then
+		if [ "$dirname" != "openfde14-arm64" ];then
+			echo "mv $dst/debian/$dirname to $dst/debian/openfde14-arm64"
+			sudo mv $dst/debian/$dirname $dst/deian/openfde14-arm64
+		fi
+	else
+		if [ "$dirname" != "openfde14" ];then
+			echo "mv $dst/debian/$dirname to $dst/debian/openfde14"
+			sudo mv $dst/debian/$dirname $dst/debian/openfde14
+		fi
 	fi
 else
-	echo "mode must in 14|arm64only|11"
+	echo "mode must in 14|11"
 	exit 1
+
 fi
 
 
 sudo rm -rf list/waydroidlist
-sudo find /usr -name "gbinder.cpython*aarch64-linux-gnu.so" >> list/waydroidlist
+sudo find /usr -name "gbinder.cpython*-linux-gnu.so" >> list/waydroidlist
+
 if [ ! -e "/etc/lsb-release" ];then
 	uname -a |grep Debian 1>/dev/null 2>&1
 	if [ $? = 0 ];then
@@ -117,19 +123,27 @@ elif [ "$DISTRIB_ID" == "Deepin" ] ;then
 	cp -a debian/control.deepin_$DISTRIB_CODENAME ${dst}/debian/control
 fi
 
-sudo cp debian/changelog.openfde ${dst}/debian/changelog
-if [ $arm64_only -eq 1 ];then
-	sudo sed -i "/Source/s/:.*/: openfde-arm64/" ${dst}/debian/control
-	sudo sed -i "/Package/s/:.*/: openfde-arm64/" ${dst}/debian/control
-	sudo sed -i "1s/^openfde.*(/openfde-arm64 (/" ${dst}/debian/changelog
-elif [ $openfde11 -eq 1 ];then
+if [ $openfde11 -eq 1 ];then
+	sudo cp debian/changelog.openfde11 ${dst}/debian/changelog
+	if [ $x86 -eq 1 ];then
+		sudo sed -i "/Architecture/s/:.*/: amd64/" ${dst}/debian/control
+	fi
 	sudo sed -i "/Source/s/:.*/: openfde/" ${dst}/debian/control
 	sudo sed -i "/Package/s/:.*/: openfde/" ${dst}/debian/control
-	sudo sed -i "1s/^openfde.*(/openfde (/" ${dst}/debian/changelog
+	#sudo sed -i "1s/^openfde.*(/openfde (/" ${dst}/debian/changelog
 elif [ $openfde14 -eq 1 ];then
-	sudo sed -i "/Source/s/:.*/: openfde14/" ${dst}/debian/control
-	sudo sed -i "/Package/s/:.*/: openfde14/" ${dst}/debian/control
 	sudo cp -a debian/changelog.openfde14 ${dst}/debian/changelog
+	if [ $arm64_only -eq 1 ];then
+		sudo sed -i "/Source/s/:.*/: openfde14-arm64/" ${dst}/debian/control
+		sudo sed -i "/Package/s/:.*/: openfde14-arm64/" ${dst}/debian/control
+		sudo sed -i "1s/^openfde.*(/openfde14-arm64 (/" ${dst}/debian/changelog
+	else
+		if [ $x86 -eq 1 ];then
+			sudo sed -i "/Architecture/s/:.*/: amd64/" ${dst}/debian/control
+		fi
+		sudo sed -i "/Source/s/:.*/: openfde14/" ${dst}/debian/control
+		sudo sed -i "/Package/s/:.*/: openfde14/" ${dst}/debian/control
+	fi
 fi
 sudo chmod a+x ${dst}/debian/changelog
 
@@ -167,7 +181,7 @@ elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
 fi
 echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar  |xz -T0 > debian/$tarfile"
-tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar |xz -T0 > debian/$tarfile
+tar -cvpf -  -C $dst fde.tar  waydroid.tar |xz -T0 > debian/$tarfile
 pushd $dst
 #step 4 fill changes
 if [ ! -e /usr/bin/dch ];then
@@ -179,7 +193,7 @@ popd
 #step 5 make debs
 dst_dir=`ls debian/ -nl |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
 pushd debian/$dst_dir
-sudo DEB_BUILD_OPTIONS="parallel=4" dpkg-buildpackage -us -uc
+sudo DEB_BUILD_OPTIONS="parallel=4" XZ_DEFAULTS="-T0" dpkg-buildpackage -us -uc
 if [ $? != 0 ];then
 	echo "Error: make deb failed."
 	popd
@@ -188,9 +202,9 @@ fi
 popd
 echo "deb file generated at debian/"
 
-if [ $arm64_only -eq 1  -o $openfde11 -eq 1 ];then
+if [ $openfde11 -eq 1 ];then
 	sudo cp -a $dst/debian/changelog debian/changelog.openfde11 
-elif [  $openfde14 -eq 1 ];then 
+elif [ $arm64_only -eq 1 -o  $openfde14 -eq 1 ];then 
 	sudo cp -a $dst/debian/changelog debian/changelog.openfde14
 fi
 sudo rm $dst/debian/changelog

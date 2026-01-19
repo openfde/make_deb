@@ -72,6 +72,7 @@ fi
 echo 95 >> /tmp/fde_installing_process
 sudo waydroid session stop 1>/dev/null 2>&1
 sudo systemctl stop waydroid-container 1>/dev/null 2>&1
+sudo systemctl stop openfde-infra 1>/dev/null 2>&1
 sudo sed -i "/fde.log/d" /etc/profile
 sudo sed -i  '$a \export LOG_FILE=/var/log/fde.log'  /etc/profile
 if [ ! -e /var/log/fde.log ];then
