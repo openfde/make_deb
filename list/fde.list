@@ -2,12 +2,10 @@
 /usr/bin/fde_fs
 /usr/bin/fde_ptfs
 /usr/bin/fde_brightness
-/usr/bin/fde-set-ime-engine
 /usr/bin/fde_utils
 /usr/bin/fde_shortcut
 /usr/bin/fde_launch
 /usr/bin/fde_switch_next_desktop
-/usr/bin/fde_display_geo.py
 /usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
 /etc/sysctl.conf
