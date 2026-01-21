@@ -151,7 +151,7 @@ if [ -z "$verNum" ];then
 fi
 verDate=`date "+%Y%m%d"`    
 verID=`echo $DISTRIB_ID | tr '[:upper:]' '[:lower:]' `
-sed -i "1s/(.*)/($ver-$verData$verID$verNum)/" ${dst}/debian/changelog
+sed -i "1s/(.*)/($ver-$verDate$verID$verNum)/" ${dst}/debian/changelog
 
 
 #step 1 tar fde
