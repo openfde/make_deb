@@ -186,7 +186,7 @@ elif [ $openfde11 -eq 1 ];then
 elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
 fi
-echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar  |xz -T0 > debian/$tarfile"
+echo "tar -cvpf -  -C $dst fde.tar   waydroid.tar  |xz -T0 > debian/$tarfile"
 tar -cvpf -  -C $dst fde.tar  waydroid.tar |xz -T0 > debian/$tarfile
 
 #step 4 fill changes
