@@ -39,7 +39,7 @@ if  [  $n = 0  ] ;then
 	exit 1
 fi
 
-find debian -maxdepth 1 -name "openfde*" -type d -delete
+find debian -maxdepth 1 -name "openfde*" -type d -exec rm -rf {} \;
 if [ $openfde14 -eq 1 ];then
 	if [ $arm64_only -eq 1 ];then
 		mkdir debian/openfde14-arm64-$ver
@@ -146,6 +146,12 @@ elif [ $openfde14 -eq 1 ];then
 	fi
 fi
 sudo chmod a+x ${dst}/debian/changelog
+if [ -z "$verNum" ];then
+	verNum=1
+fi
+verDate=`date "+%Y%m%d"`    
+verID=`echo $DISTRIB_ID | tr '[:upper:]' '[:lower:]' `
+sed -i "1s/(.*)/($ver-$verData$verID$verNum)/" ${dst}/debian/changelog
 
 
 #step 1 tar fde
@@ -182,13 +188,14 @@ elif [ $openfde14 -eq 1 ];then
 fi
 echo "tar -cvpf -  -C $dst fde.tar  waydroid_image.tar  waydroid.tar  |xz -T0 > debian/$tarfile"
 tar -cvpf -  -C $dst fde.tar  waydroid.tar |xz -T0 > debian/$tarfile
-pushd $dst
+
 #step 4 fill changes
-if [ ! -e /usr/bin/dch ];then
-	sudo apt install devscripts -y
-fi
-dch -i 
-popd 
+#pushd $dst
+#if [ ! -e /usr/bin/dch ];then
+#	sudo apt install devscripts -y
+#fi
+#dch -i 
+#popd 
 
 #step 5 make debs
 dst_dir=`ls debian/ -nl |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
