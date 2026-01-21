@@ -5,6 +5,7 @@ Maintainer: openfde <openfde@openfde>
 Build-Depends: debhelper (>=11~)
 Standards-Version: 4.1.4
 Homepage: openfde.com
+
 Package: openfde
 Architecture: arm64
 Multi-Arch: foreign

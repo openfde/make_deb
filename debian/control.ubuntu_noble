@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: openfde <openfde@openfde>
 Standards-Version: 4.1.4
 Homepage: openfde.com
+
 Package: openfde
 Architecture: arm64
 Multi-Arch: foreign
