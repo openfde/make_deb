@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+
 sudo rm -rf vendorimg systemimg
 sudo rm -rf orig system vendor 
 mkdir orig -p
@@ -56,10 +57,17 @@ sudo umount orig
 sudo umount vendor
 
 sudo rm -rf orig system vendor 
-echo "copy images to /usr/share/waydroid-extra/images y/n[n]?"
-read choice
-if [ "$choice" = "y" ];then
+if [ "$1" = "-y" ];then
 	sudo mkdir           /usr/share/waydroid-extra/images -p
 	sudo cp -a systemimg /usr/share/waydroid-extra/images/system.img
 	sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
-fi	
+else
+	echo "copy images to /usr/share/waydroid-extra/images y/n[n]?"
+	read choice
+	if [ "$choice" = "y" ];then
+		sudo mkdir           /usr/share/waydroid-extra/images -p
+		sudo cp -a systemimg /usr/share/waydroid-extra/images/system.img
+		sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
+	fi	
+fi
+
