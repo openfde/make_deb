@@ -164,18 +164,18 @@ tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 
 #step 2 pack images
 
-echo "Step 2: want to repack android images from /usr/share/waydroid-extra/images? y/n[n]"
-read choice 
-if [ -z "$choice" ];then
-	choice=n
-else
-	if [ "$choice" != "n" ];then
-		choice=y
-	fi
-fi
-if [ "$choice" = "y" ];then
+#echo "Step 2: want to repack android images from /usr/share/waydroid-extra/images? y/n[n]"
+#read choice 
+#if [ -z "$choice" ];then
+#	choice=n
+#else
+#	if [ "$choice" != "n" ];then
+#		choice=y
+#	fi
+#fi
+#if [ "$choice" = "y" ];then
 	sudo tar -zcvpf $dst/waydroid_image.tar /usr/share/waydroid-extra
-fi
+#fi
 
 #step 3 make src.xz
 
