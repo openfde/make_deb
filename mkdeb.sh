@@ -151,6 +151,9 @@ if [ -z "$verNum" ];then
 fi
 verDate=`date "+%Y%m%d"`    
 verID=`echo $DISTRIB_ID | tr '[:upper:]' '[:lower:]' `
+if [ "$DISTRIB_ID" = "Ubuntu" ];then
+	verID=`echo $DISTRIB_CODENAME | tr '[:upper:]' '[:lower:]' `
+fi
 sed -i "1s/(.*)/($ver-$verDate$verID$verNum)/" ${dst}/debian/changelog
 
 
