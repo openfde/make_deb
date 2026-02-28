@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if [ $# -ne  2 ];then
-	echo "mkdeb.sh 1.0.1 14|11 arm64only|x86 "
+if [ $# -ne  4 ];then
+	echo "mkdeb.sh 1.0.1 14|11 arm64only|x86 1"
 	exit 1
 fi
 
 set -e
+verNum=$4
 ver=$1
 if [ -z "$ver" ];then
 	echo "Error: please input a version "

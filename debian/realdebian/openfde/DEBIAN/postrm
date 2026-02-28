@@ -18,6 +18,9 @@ case "$1" in
 	sudo rm -rf /usr/bin/fde_fs 1>/dev/null 2>&1
 	sudo rm -rf /usr/bin/fde_brightness 1>/dev/null 2>&1
 	sudo rm -rf /var/lib/fde 1>/dev/null 2>&1
+	sudo rm -rf /etc/udev/rules.d/99-hide-android-apex-loops.rules 1>/dev/null 2>&1
+	sudo rm -rf /usr/lib/systemd/system/openfde-infra.service 1>/dev/null 2>&1
+	sudo rm -rf /usr/lib/systemd/system/waydroid-container.service 1>/dev/null 2>&1
         ;;
     upgrade)
         # 升级：保留旧数据，准备新版本
