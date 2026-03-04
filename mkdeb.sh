@@ -22,14 +22,12 @@ elif [ "$2" = "11" ];then
 	openfde11=1
 fi
 
-if [ $# = 3 ];then
-	if [ "$3" = "x86" ];then
-		echo "x86 arch"
-		x86=1
-	else
-		echo "arm64only arch"
-		arm64_only=1
-	fi
+if [ "$3" = "x86" ];then
+	echo "x86 arch"
+	x86=1
+elif [ "$3" = "arm64only" ];then
+	echo "arm64only arch"
+	arm64_only=1
 fi
 
 echo "find gbiner.so"
