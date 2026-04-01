@@ -27,18 +27,18 @@ sudo rm -rf /usr/openfde/waydroid_image.tar
 echo 40 >> /tmp/fde_installing_process
 
 if [ ! -e "/dev/fdeion" ];then
-	sudo mkdir vendorimg
-	sudo mount /usr/share/waydroid-extra/images/vendor.img vendorimg
+	sudo mkdir /tmp/vendorimg
+	sudo mount /usr/share/waydroid-extra/images/vendor.img /tmp/vendorimg
 	if [ $? != 0 ];then
 		echo "Error: mount vendorimg failed"
 		sudo rm -rf /usr/openfde
 		exit 1
 	fi
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml 1>/dev/null 2>&1
-	sudo rm vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml 1>/dev/null 2>&1
-	sudo rm vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc 1>/dev/null 2>&1
-	sudo umount vendorimg
-	sudo rmdir vendorimg 
+	sudo rm /tmp/vendorimg/etc/vintf/manifest/android.hardware.graphics.allocator@4.0.img.xml 1>/dev/null 2>&1
+	sudo rm /tmp/vendorimg/etc/vintf/manifest/android.hardware.graphics.mapper@4.0-passthrough.img.xml 1>/dev/null 2>&1
+	sudo rm /tmp/vendorimg/etc/init/android.hardware.graphics.allocator@4.0-service.img.rc 1>/dev/null 2>&1
+	sudo umount /tmp/vendorimg
+	sudo rmdir /tmp/vendorimg 
 fi	
 
 sudo tar -xf /usr/openfde/waydroid.tar -C /
