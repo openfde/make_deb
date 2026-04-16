@@ -73,7 +73,7 @@ elif  [ $openfde14 -eq 1 ];then
 	if  [ $arm64_only -eq 1 ];then
 		if [ "$dirname" != "openfde14-arm64" ];then
 			echo "mv $dst/debian/$dirname to $dst/debian/openfde14-arm64"
-			sudo mv $dst/debian/$dirname $dst/deian/openfde14-arm64
+			sudo mv $dst/debian/$dirname $dst/debian/openfde14-arm64
 		fi
 	else
 		if [ "$dirname" != "openfde14" ];then
@@ -176,13 +176,17 @@ tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 #	fi
 #fi
 #if [ "$choice" = "y" ];then
-	sudo tar -zcvpf $dst/waydroid_image.tar /usr/share/waydroid-extra
+	sudo tar -cvpf -  /usr/share/waydroid-extra |xz -T0 > $dst/waydroid_image.tar
 #fi
 
 #step 3 make src.xz
 
 if [ $arm64_only -eq 1 ];then
-	tarfile=openfde-arm64_${ver}.orig.tar.xz
+	if [ $openfde11 -eq 1 ];then
+		tarfile=openfde-arm64_${ver}.orig.tar.xz
+	else
+		tarfile=openfde14-arm64_${ver}.orig.tar.xz
+	fi
 elif [ $openfde11 -eq 1 ];then
 	tarfile=openfde_${ver}.orig.tar.xz
 elif [ $openfde14 -eq 1 ];then
