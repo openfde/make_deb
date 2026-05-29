@@ -6,7 +6,6 @@
 /usr/bin/fde_shortcut
 /usr/bin/fde_launch
 /usr/bin/fde_switch_next_desktop
-/usr/share/wayland-sessions/fde.desktop
 /etc/fde.conf
 /etc/sysctl.conf
 /lib/systemd/system-sleep/openfde

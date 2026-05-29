@@ -102,11 +102,7 @@ else
 fi
 cat list/waydroid.list |sudo tee -a list/waydroidlist 1>/dev/null
 sudo apt install -y debhelper
-if [ "$DISTRIB_ID" != "uos" -a "$DISTRIB_ID" != "Deepin" ];then
-	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
-fi
 if [ "$DISTRIB_ID" = "Kylin" ];then
-	cat list/kylinmutter.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cat list/kylinfde.list |sudo tee -a list/waydroidlist  1>/dev/null
 	cp -a debian/control.kylinv10sp1 ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Debian" ];then
@@ -115,6 +111,7 @@ elif [ "$DISTRIB_ID" = "Debian" ];then
 	fi
 	cp -a debian/control.debian_$VERSION_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" = "Ubuntu" ];then
+	cat list/mutter.list |sudo tee -a list/waydroidlist 1>/dev/null
 	cp -a debian/control.ubuntu_$DISTRIB_CODENAME ${dst}/debian/control
 elif [ "$DISTRIB_ID" == "uos" ] ;then
 	cp -a debian/control.uos20eagle ${dst}/debian/control
@@ -129,7 +126,6 @@ if [ $openfde11 -eq 1 ];then
 	fi
 	sudo sed -i "/Source/s/:.*/: openfde/" ${dst}/debian/control
 	sudo sed -i "/Package/s/:.*/: openfde/" ${dst}/debian/control
-	#sudo sed -i "1s/^openfde.*(/openfde (/" ${dst}/debian/changelog
 elif [ $openfde14 -eq 1 ];then
 	sudo cp -a debian/changelog.openfde14 ${dst}/debian/changelog
 	if [ $arm64_only -eq 1 ];then
