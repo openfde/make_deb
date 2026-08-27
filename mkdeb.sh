@@ -14,12 +14,21 @@ if [ -z "$ver" ];then
 fi
 openfde11=0
 openfde14=0
+openfde17=0
 arm64_only=0
 x86=0
 if [ "$2" = "14" ];then
-	openfde14=1
+    openfde14=1
+    working_path="debian/openfde14"
 elif [ "$2" = "11" ];then
-	openfde11=1
+    openfde11=1
+    working_path="debian/openfde"
+elif [ "$2" = "17" ];then
+    openfde17=1
+    working_path="debian/openfde17"
+else
+    echo "the secondary args must be one of the 11,14,17"
+    exit 1
 fi
 
 if [ "$3" = "x86" ];then
@@ -39,19 +48,13 @@ if  [  $n = 0  ] ;then
 fi
 
 find debian -maxdepth 1 -name "openfde*" -type d -exec rm -rf {} \;
-if [ $openfde14 -eq 1 ];then
-	if [ $arm64_only -eq 1 ];then
-		mkdir debian/openfde14-arm64-$ver
-	else
-		mkdir debian/openfde14-$ver
-	fi
-elif [ $openfde -eq 1 ];then
-	if [ $arm64_only -eq 1 ];then
-		mkdir debian/openfde-arm64-$ver
-	else
-		mkdir debian/openfde-$ver
-	fi
+
+if [ $arm64_only -eq 1 ];then
+    working_path=${working_path}-arm64-$ver
+else
+    working_path=${working_path}-$ver
 fi
+mkdir -p $working_path
 
 openfde_dir=`ls debian/ -ln |grep ^d |grep openfde* |awk -F " " '{print $NF}' |tr -d " "`
 dst=debian/$openfde_dir
@@ -59,34 +62,26 @@ dst=debian/$openfde_dir
 sudo cp -a debian/realdebian $dst/debian
 dirname=`find $dst/debian/ -maxdepth 1 -type d -name "openfde*" |awk -F "/" '{print $NF}'`
 
-if [ $openfde11 -eq 1 ];then
-	if  [ $arm64_only -eq 1 ];then
-		#11 doesn't support arm64only
-		echo "Error: aosp11 doesn't support arm64 only."
-		exit 1
-	fi
-	if [ "$dirname" != "openfde" ];then
-		echo "mv $dst/debian/$dirname to $dst/debian/openfde"
-		sudo mv $dst/debian/$dirname $dst/debian/openfde
-	fi
-elif  [ $openfde14 -eq 1 ];then
-	if  [ $arm64_only -eq 1 ];then
-		if [ "$dirname" != "openfde14-arm64" ];then
-			echo "mv $dst/debian/$dirname to $dst/debian/openfde14-arm64"
-			sudo mv $dst/debian/$dirname $dst/debian/openfde14-arm64
-		fi
-	else
-		if [ "$dirname" != "openfde14" ];then
-			echo "mv $dst/debian/$dirname to $dst/debian/openfde14"
-			sudo mv $dst/debian/$dirname $dst/debian/openfde14
-		fi
-	fi
-else
-	echo "mode must in 14|11"
-	exit 1
-
+# openfde11 doesn't support arm64only
+if [ "$openfde11" -eq 1 ] && [ "$arm64_only" -eq 1 ]; then
+    echo "Error: aosp11 doesn't support arm64 only."
+    exit 1
 fi
 
+# keep old behavior: only support 11/14/17 in this block
+if [ "$openfde11" -ne 1 ] && [ "$openfde14" -ne 1 ] && ["$openfde17" -ne 1 ]; then
+    echo "mode must in 14|11|17"
+    exit 1
+fi
+
+# e.g. debian/openfde14-arm64-1.0.1 -> openfde14-arm64
+target="${working_path##*/}"
+target="${target%-$ver}"
+
+if [ "$dirname" != "$target" ]; then
+    echo "mv $dst/debian/$dirname to $dst/debian/$target"
+    sudo mv "$dst/debian/$dirname" "$dst/debian/$target"
+fi
 
 sudo rm -rf list/waydroidlist
 sudo find /usr -name "gbinder.cpython*-linux-gnu.so" >> list/waydroidlist
@@ -119,27 +114,51 @@ elif [ "$DISTRIB_ID" == "Deepin" ] ;then
 	cp -a debian/control.deepin_$DISTRIB_CODENAME ${dst}/debian/control
 fi
 
-if [ $openfde11 -eq 1 ];then
-	sudo cp debian/changelog.openfde11 ${dst}/debian/changelog
-	if [ $x86 -eq 1 ];then
-		sudo sed -i "/Architecture/s/:.*/: amd64/" ${dst}/debian/control
-	fi
-	sudo sed -i "/Source/s/:.*/: openfde/" ${dst}/debian/control
-	sudo sed -i "/Package/s/:.*/: openfde/" ${dst}/debian/control
-elif [ $openfde14 -eq 1 ];then
-	sudo cp -a debian/changelog.openfde14 ${dst}/debian/changelog
-	if [ $arm64_only -eq 1 ];then
-		sudo sed -i "/Source/s/:.*/: openfde14-arm64/" ${dst}/debian/control
-		sudo sed -i "/Package/s/:.*/: openfde14-arm64/" ${dst}/debian/control
-		sudo sed -i "1s/^openfde.*(/openfde14-arm64 (/" ${dst}/debian/changelog
-	else
-		if [ $x86 -eq 1 ];then
-			sudo sed -i "/Architecture/s/:.*/: amd64/" ${dst}/debian/control
-		fi
-		sudo sed -i "/Source/s/:.*/: openfde14/" ${dst}/debian/control
-		sudo sed -i "/Package/s/:.*/: openfde14/" ${dst}/debian/control
-	fi
+
+# 1) decide base package + changelog source
+case 1 in
+  $openfde11)
+    base_pkg="openfde"
+    changelog_file="debian/changelog.openfde11"
+    ;;
+  $openfde14)
+    base_pkg="openfde14"
+    changelog_file="debian/changelog.openfde14"
+    ;;
+  $openfde17)
+    base_pkg="openfde17"
+    changelog_file="debian/changelog.openfde17"
+    ;;
+  *)
+    echo "Error: invalid mode, must be 11|14|17"
+    exit 1
+    ;;
+esac
+
+# 2) final package name
+pkg="$base_pkg"
+if [ "$arm64_only" -eq 1 ]; then
+  pkg="${base_pkg}-arm64"
 fi
+
+# 3) copy changelog
+sudo cp -a "$changelog_file" "${dst}/debian/changelog"
+
+# 4) optional architecture override
+if [ "$x86" -eq 1 ]; then
+  sudo sed -i "/Architecture/s/:.*/: amd64/" "${dst}/debian/control"
+fi
+
+# 5) set Source/Package in one pass
+sudo sed -i -E \
+  -e "/^(Source|Package):/s@:.*@: ${pkg}@" \
+  "${dst}/debian/control"
+
+# 6) arm64 changelog package name fix (only needed for 14/17 templates)
+if [ "$arm64_only" -eq 1 ] && [ "$openfde11" -ne 1 ]; then
+  sudo sed -i "1s/^openfde.*(/${pkg} (/" "${dst}/debian/changelog"
+fi
+
 sudo chmod a+x ${dst}/debian/changelog
 if [ -z "$verNum" ];then
 	verNum=1
@@ -180,13 +199,17 @@ tar -zcvpf $dst/waydroid.tar -T list/waydroidlist
 if [ $arm64_only -eq 1 ];then
 	if [ $openfde11 -eq 1 ];then
 		tarfile=openfde-arm64_${ver}.orig.tar.xz
-	else
+	elif [ $openfde14 -eq 1 ];then
+		tarfile=openfde14-arm64_${ver}.orig.tar.xz
+	elif [ $openfde17 -eq 1 ];then
 		tarfile=openfde14-arm64_${ver}.orig.tar.xz
 	fi
 elif [ $openfde11 -eq 1 ];then
 	tarfile=openfde_${ver}.orig.tar.xz
 elif [ $openfde14 -eq 1 ];then
 	tarfile=openfde14_${ver}.orig.tar.xz
+elif [ $openfde17 -eq 1 ];then
+	tarfile=openfde17_${ver}.orig.tar.xz
 fi
 echo "tar -cvpf -  -C $dst fde.tar   waydroid.tar  |xz -T0 > debian/$tarfile"
 tar -cvpf -  -C $dst fde.tar  waydroid.tar |xz -T0 > debian/$tarfile
@@ -211,9 +234,12 @@ fi
 popd
 echo "deb file generated at debian/"
 
+
 if [ $openfde11 -eq 1 ];then
 	sudo cp -a $dst/debian/changelog debian/changelog.openfde11 
-elif [ $arm64_only -eq 1 -o  $openfde14 -eq 1 ];then 
+elif [ $openfde14 -eq 1 ];then 
 	sudo cp -a $dst/debian/changelog debian/changelog.openfde14
+elif [ $openfde17 -eq 1 ];then 
+	sudo cp -a $dst/debian/changelog debian/changelog.openfde17
 fi
 sudo rm $dst/debian/changelog
