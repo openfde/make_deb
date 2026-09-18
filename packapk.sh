@@ -42,34 +42,42 @@ sudo umount system
 
 echo "make vendorimg"
 sudo mount vendor.img orig
-vendorUsed=`df -m |grep -w orig | awk -F " " '{print $3}'`
-actualUsed=`expr $vendorUsed + 250`
-dd if=/dev/zero of=vendorimg bs=1M count=$actualUsed
-sudo mkfs.ext4 vendorimg
-sudo mount vendorimg vendor
-sudo cp -a orig/* vendor/
-if [ $? != 0 ];then
-	echo "Error: copy vendor failed"
-	exit 1
+vendorSize=`df -m |grep -w orig | awk -F " " '{print $2}'`
+if [ $vendorSize -gt 1000 ];then
+    vendorUsed=`df -m |grep -w orig | awk -F " " '{print $3}'`
+    actualUsed=`expr $vendorUsed + 250`
+    dd if=/dev/zero of=vendorimg bs=1M count=$actualUsed
+    sudo mkfs.ext4 vendorimg
+    sudo mount vendorimg vendor
+    sudo cp -a orig/* vendor/
+    if [ $? != 0 ];then
+        echo "Error: copy vendor failed"
+        exit 1
+    fi
+    sudo umount vendor
 fi
-df -h |grep vendor
-#install x100 libs
-#sudo cp -a install_new/vendor/* vendor
 sudo umount orig
-sudo umount vendor
 
 sudo rm -rf orig system vendor 
 if [ "$1" = "-y" ];then
 	sudo mkdir           /usr/share/waydroid-extra/images -p
 	sudo cp -a systemimg /usr/share/waydroid-extra/images/system.img
-	sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
+    if [ $vendorSize -gt 1000 ];then
+	    sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
+    else
+	    sudo cp -a vendor.img /usr/share/waydroid-extra/images/vendor.img
+    fi
 else
 	echo "copy images to /usr/share/waydroid-extra/images y/n[n]?"
 	read choice
 	if [ "$choice" = "y" ];then
 		sudo mkdir           /usr/share/waydroid-extra/images -p
 		sudo cp -a systemimg /usr/share/waydroid-extra/images/system.img
-		sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
+        if [ $vendorSize -gt 1000 ];then
+            sudo cp -a vendorimg /usr/share/waydroid-extra/images/vendor.img
+        else
+            sudo cp -a vendor.img /usr/share/waydroid-extra/images/vendor.img
+        fi
 	fi	
 fi
 
