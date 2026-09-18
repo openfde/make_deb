@@ -41,9 +41,11 @@ sudo umount orig
 sudo umount system
 
 echo "make vendorimg"
-dd if=/dev/zero of=vendorimg bs=1M count=600
-sudo mkfs.ext4 vendorimg
 sudo mount vendor.img orig
+vendorUsed=`df -m |grep -w orig | awk -F " " '{print $3}'`
+actualUsed=`expr $vendorUsed + 250`
+dd if=/dev/zero of=vendorimg bs=1M count=$actualUsed
+sudo mkfs.ext4 vendorimg
 sudo mount vendorimg vendor
 sudo cp -a orig/* vendor/
 if [ $? != 0 ];then
